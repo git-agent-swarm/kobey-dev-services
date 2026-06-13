@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juniper Table | Restaurant Website Demo</title>
+  <meta name="description" content="A polished restaurant website demo by Kobey Dev Services: reservations, order-ahead cart, menu, private dining, hours, reviews, and responsive hospitality UI." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #171716;
+      --muted: #646660;
+      --line: #deded6;
+      --paper: #ffffff;
+      --soft: #f6f7f2;
+      --green: #254b34;
+      --green-2: #163523;
+      --tomato: #c93026;
+      --brass: #b88934;
+      --radius: 8px;
+      --shadow: 0 20px 48px rgba(23, 23, 22, .18);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button, input, select { font: inherit; }
+    .wrap { width: min(100% - 40px, var(--max)); margin-inline: auto; }
+    .serif { font-family: Fraunces, Georgia, serif; letter-spacing: 0; }
+
+    .demo-bar {
+      background: #111;
+      color: #f8f6ed;
+      font-size: 13px;
+      padding: 9px 0;
+    }
+    .demo-bar .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand {
+      font: 700 34px/1 Fraunces, Georgia, serif;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: #30312e;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--green);
+      background: var(--green);
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); background: var(--green-2); border-color: var(--green-2); }
+    .btn.light { background: white; color: var(--green); border-color: #c9d5c9; }
+    .btn.light:hover { background: #eff5ee; }
+    .btn.red { background: var(--tomato); border-color: var(--tomato); }
+    .btn.red:hover { background: #a8251e; border-color: #a8251e; }
+
+    .hero {
+      min-height: 640px;
+      display: grid;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.42) 45%, rgba(0,0,0,.08) 100%),
+        url("../../assets/demos/juniper-table-hero.webp") center / cover no-repeat;
+      color: white;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) 370px;
+      gap: 42px;
+      align-items: center;
+      padding: 74px 0;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      font: 700 clamp(44px, 7vw, 76px)/1.02 Fraunces, Georgia, serif;
+      max-width: 720px;
+      letter-spacing: 0;
+    }
+    h2 { font: 650 clamp(30px, 4vw, 48px)/1.08 Fraunces, Georgia, serif; letter-spacing: 0; }
+    h3 { font: 700 20px/1.2 Inter, sans-serif; letter-spacing: 0; }
+    .muted { color: var(--muted); }
+    .lead {
+      margin-top: 18px;
+      max-width: 520px;
+      color: rgba(255,255,255,.86);
+      font-size: 21px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .reservation-card {
+      background: rgba(255,255,255,.96);
+      color: var(--ink);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.72);
+    }
+    .reservation-card h2 { font-size: 28px; margin-bottom: 18px; }
+    .reserve-grid { display: grid; gap: 12px; }
+    label { display: grid; gap: 7px; color: #333630; font-size: 13px; font-weight: 800; }
+    input, select {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid #cfcfc4;
+      border-radius: var(--radius);
+      padding: 0 12px;
+      background: #fff;
+      outline: none;
+      color: var(--ink);
+    }
+    input:focus, select:focus { border-color: var(--green); box-shadow: 0 0 0 4px rgba(37,75,52,.14); }
+    .reserve-result {
+      margin-top: 12px;
+      color: var(--green);
+      font-weight: 800;
+      min-height: 20px;
+    }
+
+    section { padding: 84px 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(280px, .46fr);
+      gap: 42px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+    .section-head p { color: var(--muted); font-size: 17px; }
+
+    .menu-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 24px;
+      align-items: start;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .menu-card, .cart, .info-card, .review-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(23,23,22,.06);
+    }
+    .menu-card { padding: 18px; }
+    .menu-card .dish-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 10px;
+    }
+    .menu-card p { color: var(--muted); }
+    .price { color: var(--green); font-weight: 900; }
+    .tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 14px; }
+    .tag {
+      border: 1px solid #d5ddcf;
+      color: var(--green);
+      background: #f2f7f0;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .cart { padding: 20px; position: sticky; top: 96px; }
+    .cart-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .cart-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      padding: 12px 0;
+    }
+    .cart-row:last-of-type { border-bottom: 0; }
+    .qty {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fafbf8;
+    }
+    .qty button {
+      width: 34px;
+      height: 32px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font-weight: 900;
+      color: var(--green);
+    }
+    .qty span {
+      min-width: 28px;
+      text-align: center;
+      font-weight: 800;
+    }
+    .subtotal {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      border-top: 2px solid var(--ink);
+      padding-top: 16px;
+      margin-top: 16px;
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .private {
+      padding: 0;
+      background: linear-gradient(135deg, var(--green-2), var(--green));
+      color: white;
+    }
+    .private-grid {
+      display: grid;
+      grid-template-columns: .8fr 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+    .private-photo {
+      min-height: 320px;
+      background: url("../../assets/demos/juniper-table-hero.webp") center / cover no-repeat;
+      filter: saturate(.95);
+    }
+    .private-copy { padding: clamp(34px, 6vw, 72px); }
+    .private-copy p { color: rgba(255,255,255,.78); margin-top: 12px; max-width: 560px; }
+    .private-options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 24px 0;
+    }
+    .private-options span {
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: var(--radius);
+      padding: 12px;
+      font-weight: 800;
+      background: rgba(255,255,255,.08);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: .65fr .8fr 1.1fr;
+      gap: 18px;
+    }
+    .info-card { padding: 22px; }
+    .hours { display: grid; gap: 9px; margin-top: 12px; }
+    .hours div { display: flex; justify-content: space-between; gap: 20px; color: #353832; }
+    .map {
+      height: 176px;
+      border-radius: 10px;
+      background:
+        linear-gradient(90deg, rgba(37,75,52,.10) 1px, transparent 1px),
+        linear-gradient(rgba(37,75,52,.10) 1px, transparent 1px),
+        #eff3ed;
+      background-size: 30px 30px;
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      font-weight: 900;
+      margin-top: 12px;
+    }
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .review-card { padding: 18px; }
+    .stars { color: var(--brass); letter-spacing: 2px; margin-bottom: 10px; }
+    .review-card p { color: #383a35; font-size: 14px; }
+    .review-card strong { display: block; margin-top: 12px; }
+
+    .footer-cta {
+      background: #171716;
+      color: white;
+      padding: 56px 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+    }
+    .footer-grid p { color: #d4d3ca; margin-top: 9px; }
+    .demo-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .demo-note a { color: var(--green); font-weight: 900; }
+
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .hero-grid, .menu-layout, .private-grid, .section-head, .info-grid, .footer-grid { grid-template-columns: 1fr; }
+      .reservation-card { max-width: 520px; }
+      .cart { position: static; }
+      .private-photo { min-height: 220px; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 24px, var(--max)); }
+      .demo-bar .wrap { display: grid; }
+      .nav { min-height: 66px; }
+      .brand { font-size: 27px; }
+      .hero { min-height: auto; }
+      .hero-grid, section { padding: 48px 0; }
+      .lead { font-size: 18px; }
+      .hero-actions .btn, .reservation-card .btn, .cart .btn { width: 100%; }
+      .menu-grid, .reviews, .private-options { grid-template-columns: 1fr; }
+      .private-copy { padding: 34px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-bar">
+    <div class="wrap">
+      <span>Demo build by Kobey Dev Services</span>
+      <span>Restaurant website with reservation and order-ahead flow</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="#">Juniper Table</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#order">Order ahead</a>
+        <a href="#private">Private dining</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <a class="btn light" href="#reserve">Reserve a table</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>Seasonal food, booked without the back-and-forth</h1>
+          <p class="lead">A restaurant site demo built around the jobs guests actually need done: reserve a table, order ahead, check the menu, plan an event, and find the place fast.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#reserve">Reserve a table</a>
+            <a class="btn light" href="#order">Order ahead</a>
+            <a class="btn light" href="#private">Private dining</a>
+          </div>
+        </div>
+
+        <form class="reservation-card" id="reserve" data-reserve-form>
+          <h2 class="serif">Reserve a table</h2>
+          <div class="reserve-grid">
+            <label>Date
+              <input type="date" name="date" value="2026-06-18" />
+            </label>
+            <label>Time
+              <select name="time">
+                <option>6:00 PM</option>
+                <option selected>7:00 PM</option>
+                <option>8:30 PM</option>
+              </select>
+            </label>
+            <label>Guests
+              <select name="guests">
+                <option>2 guests</option>
+                <option selected>4 guests</option>
+                <option>6 guests</option>
+                <option>8 guests</option>
+              </select>
+            </label>
+            <button class="btn" type="submit">Find a table</button>
+          </div>
+          <p class="reserve-result" data-reserve-result>Instant confirmation preview</p>
+        </form>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Tonight's menu</h2>
+          <p>Menu cards, prices, filters, and order state are code-native so a production version can connect to POS, delivery, or inventory data.</p>
+        </div>
+
+        <div class="menu-layout">
+          <div class="menu-grid">
+            <article class="menu-card">
+              <div class="dish-top"><h3>Burrata and heirloom tomatoes</h3><span class="price">$14</span></div>
+              <p>Basil, aged balsamic, sea salt, olive oil.</p>
+              <div class="tags"><span class="tag">Starter</span><span class="tag">Vegetarian</span></div>
+            </article>
+            <article class="menu-card">
+              <div class="dish-top"><h3>House pappardelle</h3><span class="price">$24</span></div>
+              <p>Wild mushrooms, parmesan, truffle, cracked pepper.</p>
+              <div class="tags"><span class="tag">Pasta</span><span class="tag">Dinner</span></div>
+            </article>
+            <article class="menu-card">
+              <div class="dish-top"><h3>Seared striped bass</h3><span class="price">$32</span></div>
+              <p>Fennel, citrus beurre blanc, charred lemon.</p>
+              <div class="tags"><span class="tag">Seafood</span><span class="tag">Popular</span></div>
+            </article>
+            <article class="menu-card">
+              <div class="dish-top"><h3>Chocolate torte</h3><span class="price">$9</span></div>
+              <p>Espresso cream, cocoa nib, sea salt.</p>
+              <div class="tags"><span class="tag">Dessert</span><span class="tag">Takeout</span></div>
+            </article>
+          </div>
+
+          <aside class="cart" id="order" aria-live="polite">
+            <div class="cart-head">
+              <h2 class="serif">Order ahead</h2>
+              <span class="tag" data-cart-count>3 items</span>
+            </div>
+            <div class="cart-row" data-item data-price="14">
+              <div><strong>Kale Caesar</strong><p class="muted">$14.00</p></div>
+              <div class="qty"><button type="button" data-minus>-</button><span data-qty>1</span><button type="button" data-plus>+</button></div>
+            </div>
+            <div class="cart-row" data-item data-price="17">
+              <div><strong>Margherita pizza</strong><p class="muted">$17.00</p></div>
+              <div class="qty"><button type="button" data-minus>-</button><span data-qty>1</span><button type="button" data-plus>+</button></div>
+            </div>
+            <div class="cart-row" data-item data-price="9">
+              <div><strong>Chocolate torte</strong><p class="muted">$9.00</p></div>
+              <div class="qty"><button type="button" data-minus>-</button><span data-qty>1</span><button type="button" data-plus>+</button></div>
+            </div>
+            <div class="subtotal"><span>Subtotal</span><span data-subtotal>$40.00</span></div>
+            <button class="btn red" type="button" data-checkout>Checkout - pickup at 6:30 PM</button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="private" id="private">
+      <div class="wrap private-grid">
+        <div class="private-photo" aria-hidden="true"></div>
+        <div class="private-copy">
+          <h2>Private dining and events</h2>
+          <p>A dedicated event CTA keeps large parties from getting buried in normal reservation flow. The inquiry can route to email, Sheets, Airtable, or a CRM.</p>
+          <div class="private-options">
+            <span>Chef's table</span>
+            <span>Private room</span>
+            <span>Full buyout</span>
+          </div>
+          <a class="btn light" href="../../#contact">Ask for an event build</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="wrap">
+        <div class="info-grid">
+          <article class="info-card">
+            <h2 class="serif">Hours</h2>
+            <div class="hours">
+              <div><span>Mon-Thu</span><strong>4-10 PM</strong></div>
+              <div><span>Fri</span><strong>4-11 PM</strong></div>
+              <div><span>Sat</span><strong>11 AM-11 PM</strong></div>
+              <div><span>Sun</span><strong>11 AM-9 PM</strong></div>
+            </div>
+          </article>
+          <article class="info-card">
+            <h2 class="serif">Location</h2>
+            <p>617 W 7th St<br />Austin, TX 78701</p>
+            <div class="map">Map preview</div>
+          </article>
+          <article class="info-card">
+            <h2 class="serif">What guests are saying</h2>
+            <div class="reviews">
+              <div class="review-card"><div class="stars">*****</div><p>"Creative, seasonal, and consistent."</p><strong>Austin diner</strong></div>
+              <div class="review-card"><div class="stars">*****</div><p>"Order-ahead was fast and simple."</p><strong>Lunch guest</strong></div>
+              <div class="review-card"><div class="stars">*****</div><p>"Perfect for our team dinner."</p><strong>Event host</strong></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-cta">
+      <div class="wrap footer-grid">
+        <div>
+          <h2>A restaurant site should handle the rush before the phone rings</h2>
+          <p>This sample shows brand, menu, booking, order-ahead, event intake, hours, reviews, and responsive layout as inspectable code.</p>
+        </div>
+        <a class="btn" href="../../#contact">Build a site like this</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="demo-note">
+    Portfolio demo by <a href="../../">Kobey Dev Services</a>. Juniper Table is a fictional sample restaurant used to show website capability.
+  </div>
+
+  <script>
+    const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+    const rows = [...document.querySelectorAll("[data-item]")];
+    function updateCart() {
+      let count = 0;
+      let total = 0;
+      rows.forEach((row) => {
+        const qty = Number(row.querySelector("[data-qty]").textContent);
+        count += qty;
+        total += Number(row.dataset.price) * qty;
+      });
+      document.querySelector("[data-cart-count]").textContent = count + (count === 1 ? " item" : " items");
+      document.querySelector("[data-subtotal]").textContent = money.format(total);
+    }
+    document.querySelectorAll("[data-plus], [data-minus]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const row = button.closest("[data-item]");
+        const label = row.querySelector("[data-qty]");
+        const next = Math.max(0, Number(label.textContent) + (button.hasAttribute("data-plus") ? 1 : -1));
+        label.textContent = next;
+        updateCart();
+      });
+    });
+    document.querySelector("[data-checkout]").addEventListener("click", (event) => {
+      event.currentTarget.textContent = "Pickup order ready to review";
+      setTimeout(() => { event.currentTarget.textContent = "Checkout - pickup at 6:30 PM"; }, 1700);
+    });
+    document.querySelector("[data-reserve-form]").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      document.querySelector("[data-reserve-result]").textContent = `${data.get("guests")} available at ${data.get("time")}. Confirmation preview ready.`;
+    });
+    updateCart();
+  </script>
+</body>
+</html>
