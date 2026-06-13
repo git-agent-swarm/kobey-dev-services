@@ -6,9 +6,10 @@ profiles, and pitches to.
 
 🔗 **Live: [kobeydev.web.app](https://kobeydev.web.app)**
 
-- Real name + clear, fixed-scope service offers (websites, lead capture,
-  workflow automation, AI agents)
+- Real business name + clear service offers (websites, lead capture,
+  workflow automation, AI agents, data/reporting, writing/docs)
 - Live, clickable proof — the projects link straight to working demos and code
+- Public credibility links: GitHub, GitLab, Google Developer badges, Firebase demos
 - A **working contact form** (writes leads to Firestore, same locked-down rules
   as the rest of my sites — create-only, validated, no public reads)
 

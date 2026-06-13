@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css?v=20260613" />
 
   <script type="application/ld+json">
   {
@@ -44,9 +44,11 @@
         "@type": "ProfessionalService",
         "@id": "https://kobeydev.web.app/#business",
         "name": "Kobey Dev Services",
-        "description": "Web development, workflow automation, and AI agents for small businesses and startups.",
+        "description": "Web development, workflow automation, AI agents, data cleanup, dashboards, and technical writing for small businesses and startups.",
         "url": "https://kobeydev.web.app/",
         "image": "https://kobeydev.web.app/assets/og-image.png",
+        "telephone": "+1-337-495-6990",
+        "email": "kobey@buythebest.net",
         "priceRange": "$$",
         "areaServed": { "@type": "Country", "name": "United States" },
         "address": {
@@ -56,12 +58,14 @@
           "addressCountry": "US"
         },
         "founder": { "@id": "https://kobeydev.web.app/#kobey" },
-        "knowsAbout": ["Web Development", "Workflow Automation", "AI Agents", "Python", "JavaScript", "Lead Generation"],
+        "knowsAbout": ["Web Development", "Workflow Automation", "AI Agents", "Python", "JavaScript", "Lead Generation", "Web Scraping", "Dashboards", "Technical Writing"],
         "makesOffer": [
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business websites" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lead capture & forms" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Workflow automation" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI agents & assistants" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI agents & assistants" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data scraping & cleanup" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technical writing & documentation" } }
         ]
       },
       {
@@ -81,12 +85,13 @@
         "sameAs": [
           "https://github.com/broussardkobey67-spec",
           "https://gitlab.com/broussardkobey67",
-          "https://g.dev/kobeydev"
+          "https://me.developers.google.com/u/116492041557080639666"
         ]
       }
     ]
   }
   </script>
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -127,6 +132,17 @@
           <li><strong>Live</strong> demos you can click</li>
           <li><strong>Wichita Falls, TX</strong> · remote-friendly</li>
         </ul>
+        <div class="cred-strip" aria-label="Credibility signals">
+          <a href="https://me.developers.google.com/u/116492041557080639666" target="_blank" rel="noopener">
+            Google Developer badges: Gemini Enterprise Agent Ready, Firebase Studio, Google Cloud &amp; NVIDIA
+          </a>
+          <a href="https://github.com/git-agent-swarm" target="_blank" rel="noopener">
+            Public GitHub org with live demos and documented code
+          </a>
+          <a href="https://cedarstone-demo.web.app" target="_blank" rel="noopener">
+            Firebase-hosted lead capture demo
+          </a>
+        </div>
       </div>
     </section>
 
@@ -166,6 +182,20 @@
             <p>Custom AI that researches, drafts, classifies, and takes action — built on
               the latest models and grounded in your data.</p>
             <p class="card-tag">Gemini · agents · RAG</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">📊</div>
+            <h3>Reports &amp; dashboards</h3>
+            <p>API data pulled into clean CSVs, charts, HTML reports, Google Sheets, or
+              lightweight dashboards your team can actually use.</p>
+            <p class="card-tag">APIs · pandas · charts</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">✍️</div>
+            <h3>Writing &amp; documentation</h3>
+            <p>Technical guides, SOPs, product docs, client handoff notes, proposals, and
+              content systems written clearly and shipped with the build.</p>
+            <p class="card-tag">Docs · SOPs · handoff</p>
           </article>
         </div>
       </div>
@@ -207,6 +237,22 @@
             </div>
           </article>
           <article class="work-card reveal">
+            <h3>Web scraper toolkit</h3>
+            <p>Config-driven scraper for turning messy websites into clean CSV/Excel files.
+              Includes pagination, retries, dedupe, rate limits, and optional Playwright.</p>
+            <div class="work-links">
+              <a class="pill" href="https://github.com/broussardkobey67-spec/web-scraper-toolkit" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+          <article class="work-card reveal">
+            <h3>API report automation</h3>
+            <p>Schedule-ready Python reporting: pulls live API data, saves CSV, renders a
+              chart, and publishes a standalone HTML report.</p>
+            <div class="work-links">
+              <a class="pill" href="https://github.com/broussardkobey67-spec/api-report-automation" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+          <article class="work-card reveal">
             <h3>Games on Reddit's developer platform</h3>
             <p>Three complete games built for Reddit (Devvit): a daily Higher-or-Lower played
               with real upvotes, an action-platformer on a custom WebGL engine, and a
@@ -221,8 +267,40 @@
         <p class="work-more reveal">More on
           <a href="https://github.com/broussardkobey67-spec" target="_blank" rel="noopener">GitHub</a> ·
           <a href="https://gitlab.com/broussardkobey67" target="_blank" rel="noopener">GitLab</a> ·
-          <a href="https://g.dev/kobeydev" target="_blank" rel="noopener">Google Developer profile</a>
+          <a href="https://me.developers.google.com/u/116492041557080639666" target="_blank" rel="noopener">Google Developer profile</a>
         </p>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS -->
+    <section class="section" id="credentials">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Credibility</p>
+          <h2>Public proof customers can inspect</h2>
+          <p class="section-sub">Badges, code, deployments, and working demos are linked
+            publicly so buyers can verify the work before hiring.</p>
+        </header>
+        <div class="proof-grid">
+          <article class="proof-card reveal">
+            <h3>Google Developer Program</h3>
+            <p>Public badges include Gemini Enterprise Agent Ready, Firebase Studio Developer
+              Community, Google Maps Platform Innovators, and Google Cloud &amp; NVIDIA community.</p>
+            <a href="https://me.developers.google.com/u/116492041557080639666" target="_blank" rel="noopener">View profile</a>
+          </article>
+          <article class="proof-card reveal">
+            <h3>Firebase deployments</h3>
+            <p>Live static sites with Firebase Hosting plus Firestore lead capture. Fast,
+              inspectable, and practical for local businesses.</p>
+            <a href="https://cedarstone-demo.web.app" target="_blank" rel="noopener">Open demo</a>
+          </article>
+          <article class="proof-card reveal">
+            <h3>GitHub + GitLab portfolio</h3>
+            <p>Public repos show Python automation, AI agents, JavaScript websites, Devvit
+              apps, documentation, and repeatable client-ready patterns.</p>
+            <a href="https://github.com/git-agent-swarm" target="_blank" rel="noopener">View org</a>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -258,8 +336,11 @@
           <p class="section-sub">A free 15-minute consult — I'll tell you honestly whether I
             can help and what it would take. No pressure, no jargon.</p>
           <ul class="contact-list">
+            <li><span aria-hidden="true">📞</span> <a href="tel:+13374956990">(337) 495-6990</a></li>
+            <li><span aria-hidden="true">✉️</span> <a href="mailto:kobey@buythebest.net">kobey@buythebest.net</a></li>
             <li><span aria-hidden="true">💻</span> <a href="https://github.com/broussardkobey67-spec" target="_blank" rel="noopener">github.com/broussardkobey67-spec</a></li>
             <li><span aria-hidden="true">🦊</span> <a href="https://gitlab.com/broussardkobey67" target="_blank" rel="noopener">gitlab.com/broussardkobey67</a></li>
+            <li><span aria-hidden="true">🏅</span> <a href="https://me.developers.google.com/u/116492041557080639666" target="_blank" rel="noopener">Google Developer badges</a></li>
             <li><span aria-hidden="true">📍</span> Wichita Falls, TX — available remote</li>
           </ul>
         </div>
