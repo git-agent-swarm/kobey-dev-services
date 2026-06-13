@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoltWorks Electrical | Contractor Website Demo</title>
+  <meta name="description" content="A polished local electrical contractor website demo by Kobey Dev Services: services, quote flow, project proof, and emergency repair positioning." />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #667085;
+      --line: #d9e1ea;
+      --paper: #ffffff;
+      --soft: #f5f8fb;
+      --panel: #eef5fb;
+      --blue: #0877d8;
+      --blue-deep: #075aa6;
+      --amber: #f5a524;
+      --green: #138a5e;
+      --radius: 8px;
+      --shadow: 0 18px 44px rgba(17, 24, 39, .16);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+
+    .wrap { width: min(100% - 40px, var(--max)); margin-inline: auto; }
+    .topbar {
+      background: #0f172a;
+      color: #e8eef6;
+      font-size: 14px;
+    }
+    .topbar .wrap {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Manrope, Inter, sans-serif;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--blue), #12b8ff);
+      display: grid;
+      place-items: center;
+      color: white;
+      box-shadow: 0 8px 22px rgba(8,119,216,.24);
+    }
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: -2px;
+    }
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: #344054;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .links a:hover { color: var(--blue); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--blue);
+      background: var(--blue);
+      color: white;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: var(--radius);
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .16s ease, background .16s ease, border-color .16s ease;
+    }
+    .btn:hover { transform: translateY(-1px); background: var(--blue-deep); border-color: var(--blue-deep); }
+    .btn.ghost { background: white; color: var(--blue); border-color: #bdd7f0; }
+    .btn.ghost:hover { background: #eef7ff; }
+
+    .hero {
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.92) 39%, rgba(255,255,255,.18) 67%, rgba(255,255,255,0) 100%),
+        url("../../assets/demos/voltworks-hero.webp") center right / cover no-repeat;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero .wrap {
+      min-height: 680px;
+      display: grid;
+      align-items: center;
+      padding: 74px 0 86px;
+    }
+    .hero-copy { max-width: 640px; }
+    h1, h2, h3 {
+      font-family: Manrope, Inter, sans-serif;
+      line-height: 1.06;
+      margin: 0;
+      letter-spacing: 0;
+    }
+    h1 { font-size: clamp(42px, 7vw, 76px); max-width: 720px; }
+    h2 { font-size: clamp(30px, 4vw, 48px); }
+    h3 { font-size: 21px; }
+    p { margin: 0; }
+    .lead {
+      margin-top: 22px;
+      max-width: 590px;
+      color: #344054;
+      font-size: 19px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .proof-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 34px;
+      max-width: 680px;
+    }
+    .proof-pill {
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      box-shadow: 0 12px 30px rgba(17,24,39,.08);
+    }
+    .proof-pill strong {
+      display: block;
+      font-family: Manrope, Inter, sans-serif;
+      font-size: 18px;
+    }
+    .proof-pill span { display: block; color: var(--muted); font-size: 13px; margin-top: 3px; }
+
+    section { padding: 86px 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(280px, .5fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 32px;
+    }
+    .section-head p { color: var(--muted); font-size: 17px; }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 8px 30px rgba(17,24,39,.06);
+    }
+    .service-card {
+      min-height: 250px;
+      padding: 26px;
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .service-card:last-child { border-right: 0; }
+    .service-card svg { color: var(--blue); }
+    .service-card p { color: var(--muted); font-size: 15px; }
+    .service-card a {
+      margin-top: auto;
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .band {
+      background: #111827;
+      color: white;
+      padding: 34px 0;
+    }
+    .band .wrap {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 28px;
+    }
+    .band h2 { font-size: clamp(25px, 3vw, 36px); }
+    .band p { color: #cbd5e1; margin-top: 7px; }
+
+    .quote-area {
+      background: var(--soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .quote-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .quote-card, .summary-card, .project-card, .review-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 12px 34px rgba(17,24,39,.07);
+    }
+    .quote-card { padding: 26px; }
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    label { display: grid; gap: 7px; color: #344054; font-size: 14px; font-weight: 800; }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px 13px;
+      background: #fbfdff;
+      color: var(--ink);
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(8,119,216,.13);
+      background: white;
+    }
+    .full { grid-column: 1 / -1; }
+    .summary-card { overflow: hidden; }
+    .summary-top {
+      padding: 24px;
+      background: linear-gradient(135deg, #0877d8, #0e9ddf);
+      color: white;
+    }
+    .summary-top p { color: rgba(255,255,255,.78); margin-top: 7px; }
+    .summary-body { padding: 24px; display: grid; gap: 16px; }
+    .estimate-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+    .estimate-row span { color: var(--muted); }
+    .estimate-row strong { text-align: right; }
+    .notice {
+      background: #fff7e8;
+      border: 1px solid #ffd99b;
+      border-radius: 10px;
+      padding: 13px 14px;
+      color: #7a4b00;
+      font-size: 14px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .project-card { padding: 22px; }
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 22px;
+    }
+    .meter {
+      height: 9px;
+      background: #e8eef6;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 18px;
+    }
+    .meter span { display: block; height: 100%; background: linear-gradient(90deg, var(--blue), var(--amber)); }
+
+    .reviews {
+      background: var(--soft);
+      border-top: 1px solid var(--line);
+    }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .review-card { padding: 24px; }
+    .stars { color: var(--amber); letter-spacing: 3px; margin-bottom: 14px; }
+    .review-card p { color: #344054; }
+    .review-card strong { display: block; margin-top: 18px; }
+
+    .footer-cta {
+      background: linear-gradient(135deg, #0f172a, #1d2939);
+      color: white;
+      padding: 74px 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+    }
+    .footer-grid p { color: #cbd5e1; margin-top: 10px; max-width: 650px; }
+    .demo-note {
+      border-top: 1px solid var(--line);
+      padding: 18px 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      background: white;
+    }
+    .demo-note a { color: var(--blue); font-weight: 800; }
+
+    @media (max-width: 980px) {
+      .links { display: none; }
+      .hero { background-position: center; }
+      .hero .wrap { min-height: auto; }
+      .hero-copy {
+        background: rgba(255,255,255,.86);
+        border: 1px solid rgba(217,225,234,.8);
+        border-radius: 14px;
+        padding: 26px;
+        box-shadow: var(--shadow);
+      }
+      .proof-strip, .services, .quote-grid, .projects, .review-grid, .section-head, .band .wrap, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .service-card { border-right: 0; border-bottom: 1px solid var(--line); }
+      .service-card:last-child { border-bottom: 0; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 24px, var(--max)); }
+      .topbar .wrap { align-items: flex-start; padding: 10px 0; }
+      .nav { min-height: 64px; }
+      .mark { width: 36px; height: 36px; }
+      .hero .wrap, section { padding: 48px 0; }
+      .hero-copy { padding: 20px; }
+      .field-grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <span>Demo build by Kobey Dev Services</span>
+      <span>Electrical contractor website concept with quote flow</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="#">
+        <span class="mark" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none">
+            <path d="M13 2 4 14h7l-1 8 10-13h-7l0-7Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span>VoltWorks Electrical<small>Residential and commercial service</small></span>
+      </a>
+      <nav class="links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#quote">Quote</a>
+        <a href="#projects">Projects</a>
+        <a href="#reviews">Reviews</a>
+      </nav>
+      <a class="btn" href="#quote">Request a quote</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-copy">
+          <h1>Licensed electrical work without the waiting game</h1>
+          <p class="lead">A professional contractor site built around the buyer's real questions: what you fix, how fast you respond, what it may cost, and how to request a quote without calling first.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#quote">Request a quote</a>
+            <a class="btn ghost" href="#services">View services</a>
+          </div>
+          <div class="proof-strip" aria-label="Service highlights">
+            <div class="proof-pill"><strong>Emergency repairs</strong><span>Triage-first intake</span></div>
+            <div class="proof-pill"><strong>Panel upgrades</strong><span>Clear scope checklist</span></div>
+            <div class="proof-pill"><strong>EV charger installs</strong><span>Home readiness flow</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Service pages that answer before the customer asks</h2>
+          <p>Each service card is written for search, trust, and conversion. The structure can become individual SEO pages later without rebuilding the brand.</p>
+        </div>
+        <div class="services">
+          <article class="service-card">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5h5l-1.2 7L20 8.5h-6l1-5L4 12.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            <h3>Emergency repairs</h3>
+            <p>Breaker trips, dead circuits, burnt outlets, storm damage triage, and safety checks.</p>
+            <a href="#quote">Start urgent request</a>
+          </article>
+          <article class="service-card">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h14v16H5V4Z" stroke="currentColor" stroke-width="2"/><path d="M8 8h3M13 8h3M8 12h3M13 12h3M8 16h3M13 16h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <h3>Panel upgrades</h3>
+            <p>Modern capacity planning for remodels, additions, equipment, and older homes.</p>
+            <a href="#projects">See upgrade proof</a>
+          </article>
+          <article class="service-card">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3v6M16 3v6M6 9h12v4a6 6 0 0 1-12 0V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 19v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <h3>EV charger installs</h3>
+            <p>Load checks, placement planning, permit-ready details, and clean finished installs.</p>
+            <a href="#quote">Check readiness</a>
+          </article>
+          <article class="service-card">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16M7 5v14M17 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <h3>Commercial service</h3>
+            <p>Tenant improvements, lighting retrofits, signage, troubleshooting, and maintenance.</p>
+            <a href="#quote">Plan a walkthrough</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="band">
+      <div class="wrap">
+        <div>
+          <h2>Emergency request flow built for after-hours leads</h2>
+          <p>Priority, location, contact method, and problem type are captured before the first callback.</p>
+        </div>
+        <a class="btn" href="#quote">Open quote form</a>
+      </div>
+    </div>
+
+    <section class="quote-area" id="quote">
+      <div class="wrap quote-grid">
+        <form class="quote-card" data-quote-form>
+          <h2>Request a quote</h2>
+          <p class="lead">This demo form updates the quote summary instantly. A production version can send email, save to CRM, or write to Firestore.</p>
+          <div class="field-grid">
+            <label>Service type
+              <select name="service" data-service>
+                <option value="Emergency repair" data-range="$175-$425">Emergency repair</option>
+                <option value="Panel upgrade" data-range="$1,800-$4,500">Panel upgrade</option>
+                <option value="EV charger install" data-range="$650-$1,600">EV charger install</option>
+                <option value="Commercial service" data-range="Walkthrough required">Commercial service</option>
+              </select>
+            </label>
+            <label>Timeline
+              <select name="timeline" data-timeline>
+                <option>Today if possible</option>
+                <option>This week</option>
+                <option>This month</option>
+                <option>Planning phase</option>
+              </select>
+            </label>
+            <label>ZIP code
+              <input name="zip" inputmode="numeric" placeholder="76308" />
+            </label>
+            <label>Property type
+              <select name="property" data-property>
+                <option>Single-family home</option>
+                <option>Rental property</option>
+                <option>Retail / office</option>
+                <option>Light industrial</option>
+              </select>
+            </label>
+            <label class="full">Project notes
+              <textarea name="notes" rows="4" placeholder="Example: 200A panel, EV charger near garage, breaker trips when dryer runs."></textarea>
+            </label>
+          </div>
+        </form>
+
+        <aside class="summary-card" aria-live="polite">
+          <div class="summary-top">
+            <h2 data-summary-service>Emergency repair</h2>
+            <p>Instant intake summary for office staff or a technician callback.</p>
+          </div>
+          <div class="summary-body">
+            <div class="estimate-row"><span>Typical starting range</span><strong data-summary-range>$175-$425</strong></div>
+            <div class="estimate-row"><span>Priority</span><strong data-summary-timeline>Today if possible</strong></div>
+            <div class="estimate-row"><span>Property</span><strong data-summary-property>Single-family home</strong></div>
+            <div class="notice">Demo only. Real quotes depend on local code, inspection, parts, access, and permit requirements.</div>
+            <button class="btn" type="button" data-demo-submit>Preview request packet</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Project proof without fake client claims</h2>
+          <p>These cards show how a contractor can explain real work categories, complexity, and outcomes without inventing awards or unverifiable promises.</p>
+        </div>
+        <div class="projects">
+          <article class="project-card">
+            <div class="project-meta"><span>Panel upgrade</span><span>2 days</span></div>
+            <h3>Older-home capacity upgrade</h3>
+            <p>Before/after scope, permit notes, equipment list, and homeowner handoff checklist.</p>
+            <div class="meter" aria-hidden="true"><span style="width: 88%"></span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-meta"><span>EV charger</span><span>1 day</span></div>
+            <h3>Garage charging install</h3>
+            <p>Load calculation, charger placement, clean conduit path, and final walkthrough.</p>
+            <div class="meter" aria-hidden="true"><span style="width: 72%"></span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-meta"><span>Commercial</span><span>Phased</span></div>
+            <h3>Retail lighting retrofit</h3>
+            <p>After-hours scheduling, fixture map, reduced downtime, and maintenance notes.</p>
+            <div class="meter" aria-hidden="true"><span style="width: 94%"></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Trust copy that feels specific</h2>
+          <p>Review blocks are structured so real customer quotes can be dropped in later with location, job type, and service context.</p>
+        </div>
+        <div class="review-grid">
+          <article class="review-card"><div class="stars">*****</div><p>"They explained the issue, gave options, and left the panel labeled better than before."</p><strong>Panel repair customer</strong></article>
+          <article class="review-card"><div class="stars">*****</div><p>"The quote request made it easy to send photos and describe what we needed before anyone came out."</p><strong>EV install customer</strong></article>
+          <article class="review-card"><div class="stars">*****</div><p>"Clear scheduling, clean work, and no confusion about what was included."</p><strong>Commercial service customer</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-cta">
+      <div class="wrap footer-grid">
+        <div>
+          <h2>A contractor site should sell the work before the callback</h2>
+          <p>This is a client-style demo: brand, service pages, quote flow, proof cards, reviews, and responsive layout built as inspectable code.</p>
+        </div>
+        <a class="btn" href="../../#contact">Build a site like this</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="demo-note">
+    Portfolio demo by <a href="../../">Kobey Dev Services</a>. VoltWorks Electrical is a fictional sample brand used to show website capability.
+  </div>
+
+  <script>
+    const form = document.querySelector("[data-quote-form]");
+    const service = document.querySelector("[data-service]");
+    const timeline = document.querySelector("[data-timeline]");
+    const property = document.querySelector("[data-property]");
+    const submit = document.querySelector("[data-demo-submit]");
+
+    function syncSummary() {
+      const selected = service.options[service.selectedIndex];
+      document.querySelector("[data-summary-service]").textContent = selected.value;
+      document.querySelector("[data-summary-range]").textContent = selected.dataset.range;
+      document.querySelector("[data-summary-timeline]").textContent = timeline.value;
+      document.querySelector("[data-summary-property]").textContent = property.value;
+    }
+
+    form.addEventListener("input", syncSummary);
+    submit.addEventListener("click", () => {
+      submit.textContent = "Request packet ready";
+      setTimeout(() => { submit.textContent = "Preview request packet"; }, 1700);
+    });
+    syncSummary();
+  </script>
+</body>
+</html>

@@ -22,7 +22,7 @@
         "headers": [{ "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }]
       },
       {
-        "source": "**/*.@(css|js|svg|woff2)",
+        "source": "**/*.@(css|js|svg|png|jpg|jpeg|webp|woff2)",
         "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
       }
     ]

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VitalLoop | Health App Dashboard Demo</title>
+  <meta name="description" content="A polished interactive health and wellness app dashboard demo by Kobey Dev Services." />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #102033;
+      --muted: #64748b;
+      --line: #dbe7ee;
+      --paper: #ffffff;
+      --soft: #f5fafb;
+      --teal: #0ea5a3;
+      --teal-deep: #087b7a;
+      --green: #20a464;
+      --coral: #ef6f61;
+      --navy: #172554;
+      --yellow: #f5b84b;
+      --shadow: 0 16px 42px rgba(16, 32, 51, .12);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+      color: var(--ink);
+      background: var(--soft);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .demo-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+    }
+    .sidebar {
+      background: #ffffff;
+      border-right: 1px solid var(--line);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--teal), #22c55e);
+    }
+    .nav-list {
+      display: grid;
+      gap: 7px;
+      margin-top: 8px;
+    }
+    .nav-item {
+      border: 0;
+      background: transparent;
+      color: #42526b;
+      border-radius: var(--radius);
+      padding: 11px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      text-align: left;
+    }
+    .nav-item.active, .nav-item:hover {
+      color: var(--teal-deep);
+      background: #e8faf8;
+    }
+    .member-card {
+      margin-top: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      background: #fbfeff;
+    }
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #d9f7f1;
+      color: var(--teal-deep);
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    .member-card strong { display: block; }
+    .member-card span { color: var(--muted); font-size: 13px; }
+
+    .main {
+      padding: 24px;
+      display: grid;
+      gap: 20px;
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 20px;
+      box-shadow: 0 10px 28px rgba(16,32,51,.05);
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: clamp(28px, 4vw, 42px); letter-spacing: 0; line-height: 1.08; }
+    h2 { font-size: 18px; letter-spacing: 0; }
+    h3 { font-size: 15px; letter-spacing: 0; }
+    .sub { color: var(--muted); margin-top: 6px; }
+    .filters {
+      display: flex;
+      gap: 4px;
+      padding: 4px;
+      background: #eef6f8;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+    }
+    .filter {
+      border: 0;
+      min-width: 64px;
+      border-radius: 999px;
+      padding: 9px 13px;
+      color: #526274;
+      background: transparent;
+      cursor: pointer;
+      font-weight: 800;
+    }
+    .filter.active { background: white; color: var(--teal-deep); box-shadow: 0 4px 12px rgba(16,32,51,.08); }
+
+    .hero-asset {
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(320px, .58fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+    .daily-plan, .device-card, .panel {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(16,32,51,.05);
+    }
+    .daily-plan { padding: 20px; }
+    .device-card { overflow: hidden; }
+    .device-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 330px;
+    }
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      min-height: 136px;
+      background: #fbfeff;
+    }
+    .ring {
+      --value: 72;
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: conic-gradient(var(--teal) calc(var(--value) * 1%), #e6edf2 0);
+      display: grid;
+      place-items: center;
+      margin-bottom: 10px;
+    }
+    .ring::after {
+      content: attr(data-value) "%";
+      width: 48px;
+      height: 48px;
+      background: white;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 12px;
+    }
+    .metric strong { display: block; font-size: 20px; margin-bottom: 3px; }
+    .metric span { color: var(--muted); font-size: 13px; }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr .8fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .panel { padding: 18px; }
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .panel-head a, .link-button {
+      color: var(--teal-deep);
+      font-weight: 800;
+      font-size: 13px;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+    .chart {
+      height: 224px;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 12px;
+      align-items: end;
+      border-bottom: 1px solid var(--line);
+      padding: 20px 4px 0;
+    }
+    .bar {
+      background: linear-gradient(180deg, #5eead4, var(--teal));
+      border-radius: 8px 8px 0 0;
+      min-height: 28px;
+      position: relative;
+    }
+    .bar::after {
+      content: attr(data-day);
+      position: absolute;
+      bottom: -26px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .task-list { display: grid; gap: 10px; margin-top: 14px; }
+    .task {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 11px 12px;
+      background: #fbfeff;
+    }
+    .task input { width: 18px; height: 18px; accent-color: var(--teal); }
+    .task span { color: var(--muted); font-size: 13px; }
+    .task.done strong { text-decoration: line-through; color: #748294; }
+    .appointment {
+      background: linear-gradient(135deg, #e8faf8, #f8fffd);
+      border: 1px solid #c4eee9;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .appointment time { display: block; color: var(--teal-deep); font-weight: 900; margin-bottom: 8px; }
+    .meds { display: grid; gap: 11px; }
+    .med {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 11px;
+    }
+    .med:last-child { border-bottom: 0; padding-bottom: 0; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: #dcfce7;
+      color: #166534;
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .badge.warn { background: #fff3d6; color: #8a5500; }
+    .note-box textarea {
+      width: 100%;
+      min-height: 96px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      outline: none;
+      background: #fbfeff;
+    }
+    .note-box textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(14,165,163,.13);
+      background: white;
+    }
+    .note-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .primary {
+      border: 0;
+      background: var(--teal);
+      color: white;
+      border-radius: var(--radius);
+      min-height: 40px;
+      padding: 0 14px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+    .primary:hover { background: var(--teal-deep); }
+    .saved-note {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: #fff7f5;
+      border: 1px solid #ffd4ce;
+      border-radius: 10px;
+      color: #8f3a30;
+      font-size: 13px;
+      display: none;
+    }
+    .saved-note.show { display: block; }
+
+    .demo-footer {
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+      padding: 8px 0 2px;
+    }
+    .demo-footer a { color: var(--teal-deep); font-weight: 900; }
+
+    @media (max-width: 1180px) {
+      .demo-shell { grid-template-columns: 1fr; }
+      .sidebar {
+        position: static;
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+      }
+      .nav-list { display: flex; margin-top: 0; }
+      .member-card { margin-top: 0; min-width: 190px; }
+      .hero-asset, .dashboard-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      body { overflow-x: hidden; }
+      .main { padding: 14px; }
+      .top { align-items: flex-start; flex-direction: column; }
+      .filters { width: 100%; overflow-x: auto; }
+      .plan-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .chart { gap: 8px; }
+      .device-card img { min-height: 220px; }
+      .sidebar {
+        display: block;
+        padding: 14px;
+        overflow: hidden;
+      }
+      .brand { margin-bottom: 12px; }
+      .nav-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        overflow: visible;
+      }
+      .nav-item {
+        justify-content: center;
+        white-space: nowrap;
+      }
+      .member-card { display: none; }
+    }
+    @media (max-width: 480px) {
+      .plan-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-shell">
+    <aside class="sidebar" aria-label="VitalLoop navigation">
+      <a class="brand" href="#">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.7-9.2-9.4C.9 7.7 3.3 4 7.2 4c2 0 3.5 1 4.8 2.7C13.3 5 14.8 4 16.8 4c3.9 0 6.3 3.7 4.4 7.6C19 16.3 12 21 12 21Z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </span>
+        VitalLoop
+      </a>
+      <nav class="nav-list">
+        <button class="nav-item active" type="button">Today</button>
+        <button class="nav-item" type="button">Plan</button>
+        <button class="nav-item" type="button">Nutrition</button>
+        <button class="nav-item" type="button">Medication</button>
+        <button class="nav-item" type="button">Messages</button>
+      </nav>
+      <div class="member-card">
+        <div class="avatar">KB</div>
+        <strong>Kobey Sample</strong>
+        <span>Wellness member - demo data</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="top">
+        <div>
+          <h1>Today</h1>
+          <p class="sub">Track routines, sleep, hydration, medication, symptoms, and appointments in one calm dashboard.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Time range">
+          <button class="filter active" type="button" data-range="today">Today</button>
+          <button class="filter" type="button" data-range="week">Week</button>
+          <button class="filter" type="button" data-range="month">Month</button>
+        </div>
+      </header>
+
+      <section class="hero-asset" aria-label="Product overview">
+        <div class="daily-plan panel">
+          <div class="panel-head">
+            <div>
+              <h2>Daily progress</h2>
+              <p class="sub" data-range-label>Live sample data for today</p>
+            </div>
+            <button class="link-button" type="button" data-complete-all>Mark complete</button>
+          </div>
+          <div class="plan-grid">
+            <article class="metric">
+              <div class="ring" style="--value: 72" data-value="72"></div>
+              <strong data-steps>6,842</strong>
+              <span>Activity steps</span>
+            </article>
+            <article class="metric">
+              <div class="ring" style="--value: 64" data-value="64"></div>
+              <strong data-water>1.6 / 2.5 L</strong>
+              <span>Hydration</span>
+            </article>
+            <article class="metric">
+              <div class="ring" style="--value: 76" data-value="76"></div>
+              <strong data-sleep>6h 45m</strong>
+              <span>Sleep</span>
+            </article>
+            <article class="metric">
+              <div class="ring" style="--value: 67" data-value="67"></div>
+              <strong data-meals>2 / 3</strong>
+              <span>Meals logged</span>
+            </article>
+          </div>
+        </div>
+        <div class="device-card">
+          <img src="../../assets/demos/vitalloop-device.webp" alt="VitalLoop dashboard mockup on a tablet in a wellness desk setting" />
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Sleep trend</h2>
+            <a href="#notes">View notes</a>
+          </div>
+          <div class="chart" aria-label="Sleep trend chart">
+            <div class="bar" style="height: 48%" data-day="Mon"></div>
+            <div class="bar" style="height: 63%" data-day="Tue"></div>
+            <div class="bar" style="height: 57%" data-day="Wed"></div>
+            <div class="bar" style="height: 82%" data-day="Thu"></div>
+            <div class="bar" style="height: 74%" data-day="Fri"></div>
+            <div class="bar" style="height: 69%" data-day="Sat"></div>
+            <div class="bar" style="height: 78%" data-day="Sun"></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Today plan</h2>
+            <span class="badge" data-plan-score>3 of 5 done</span>
+          </div>
+          <div class="task-list" data-task-list>
+            <label class="task done"><input type="checkbox" checked /><strong>Drink 2.5 L of water</strong><span>1.6 / 2.5 L</span></label>
+            <label class="task done"><input type="checkbox" checked /><strong>Walk 30 minutes</strong><span>6,842 steps</span></label>
+            <label class="task"><input type="checkbox" /><strong>Eat balanced dinner</strong><span>2 / 3 meals</span></label>
+            <label class="task done"><input type="checkbox" checked /><strong>Take medication</strong><span>2 items</span></label>
+            <label class="task"><input type="checkbox" /><strong>Sleep by 10:30 PM</strong><span>Reminder set</span></label>
+          </div>
+        </article>
+
+        <aside class="panel">
+          <div class="appointment">
+            <time datetime="2026-06-18T10:30">Next appointment - Thu, Jun 18</time>
+            <h3>Wellness check-in</h3>
+            <p class="sub">10:30 AM - video visit</p>
+          </div>
+          <div class="panel-head">
+            <h2>Medication</h2>
+            <button class="link-button" type="button">View all</button>
+          </div>
+          <div class="meds">
+            <div class="med"><div><strong>Vitamin D3</strong><p class="sub">8:00 AM - daily</p></div><span class="badge">Taken</span></div>
+            <div class="med"><div><strong>Omega-3</strong><p class="sub">12:00 PM - daily</p></div><span class="badge warn">Due</span></div>
+            <div class="med"><div><strong>Magnesium</strong><p class="sub">8:00 PM - daily</p></div><span class="badge">Taken</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="dashboard-grid" id="notes">
+        <article class="panel note-box">
+          <div class="panel-head">
+            <h2>Symptoms</h2>
+            <button class="link-button" type="button" data-clear-note>Clear</button>
+          </div>
+          <textarea data-note placeholder="Add note: headache, bloating, stress, energy level, pain, mood..."></textarea>
+          <div class="note-actions">
+            <span class="sub" data-note-count>0 characters</span>
+            <button class="primary" type="button" data-save-note>Add note</button>
+          </div>
+          <p class="saved-note" data-saved-note>Note saved to this demo session.</p>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Meal and hydration</h2>
+            <span class="badge">On pace</span>
+          </div>
+          <div class="task-list">
+            <div class="task done"><span class="badge">Logged</span><strong>Breakfast</strong><span>Protein oats</span></div>
+            <div class="task done"><span class="badge">Logged</span><strong>Lunch</strong><span>Chicken bowl</span></div>
+            <div class="task"><span class="badge warn">Open</span><strong>Dinner</strong><span>Not logged</span></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Client-ready build notes</h2>
+          </div>
+          <p class="sub">A production version can connect real auth, database storage, appointment APIs, reminders, and exports. This demo avoids diagnosis claims and uses fictional sample data.</p>
+        </article>
+      </section>
+
+      <footer class="demo-footer">
+        Portfolio demo by <a href="../../">Kobey Dev Services</a>. VitalLoop is a fictional sample app used to show dashboard and product UI capability.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const ranges = {
+      today: { label: "Live sample data for today", steps: "6,842", water: "1.6 / 2.5 L", sleep: "6h 45m", meals: "2 / 3" },
+      week: { label: "Sample weekly trend view", steps: "48,210", water: "11.8 / 17.5 L", sleep: "47h 30m", meals: "16 / 21" },
+      month: { label: "Sample monthly summary view", steps: "204k", water: "51 / 75 L", sleep: "196h", meals: "68 / 90" }
+    };
+
+    document.querySelectorAll(".filter").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".filter").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        const data = ranges[button.dataset.range];
+        document.querySelector("[data-range-label]").textContent = data.label;
+        document.querySelector("[data-steps]").textContent = data.steps;
+        document.querySelector("[data-water]").textContent = data.water;
+        document.querySelector("[data-sleep]").textContent = data.sleep;
+        document.querySelector("[data-meals]").textContent = data.meals;
+      });
+    });
+
+    function updateTasks() {
+      const tasks = [...document.querySelectorAll("[data-task-list] .task")];
+      const done = tasks.filter((task) => task.querySelector("input").checked).length;
+      tasks.forEach((task) => task.classList.toggle("done", task.querySelector("input").checked));
+      document.querySelector("[data-plan-score]").textContent = done + " of " + tasks.length + " done";
+    }
+    document.querySelectorAll("[data-task-list] input").forEach((input) => input.addEventListener("change", updateTasks));
+    document.querySelector("[data-complete-all]").addEventListener("click", () => {
+      document.querySelectorAll("[data-task-list] input").forEach((input) => { input.checked = true; });
+      updateTasks();
+    });
+
+    const note = document.querySelector("[data-note]");
+    const noteCount = document.querySelector("[data-note-count]");
+    const saved = document.querySelector("[data-saved-note]");
+    note.addEventListener("input", () => {
+      noteCount.textContent = note.value.length + " characters";
+      saved.classList.remove("show");
+    });
+    document.querySelector("[data-save-note]").addEventListener("click", () => {
+      saved.classList.add("show");
+    });
+    document.querySelector("[data-clear-note]").addEventListener("click", () => {
+      note.value = "";
+      noteCount.textContent = "0 characters";
+      saved.classList.remove("show");
+    });
+    updateTasks();
+  </script>
+</body>
+</html>
