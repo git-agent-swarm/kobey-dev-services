@@ -8,7 +8,7 @@ profiles, and pitches to.
 
 - Real business name + clear service offers (websites, lead capture,
   workflow automation, AI agents, data/reporting, writing/docs)
-- Live, clickable proof — 19+ projects linking straight to working demos and code
+- Live, clickable proof — 20+ projects linking straight to working demos and code
 - Public credibility links: GitHub, GitLab, Google Developer badges, Firebase demos
 - A **working contact form** (writes leads to Firestore, same locked-down rules
   as the rest of my sites — create-only, validated, no public reads)
@@ -36,6 +36,7 @@ python3 -m http.server 8000   # then open http://localhost:8000
 - [azure-functions-lead-router-demo](https://github.com/git-agent-swarm/azure-functions-lead-router-demo) — Azure Functions-style lead routing workflow with Python tests.
 - [adobe-oauth-server-to-server-demo](https://github.com/git-agent-swarm/adobe-oauth-server-to-server-demo) — backend Node token-client proof for Adobe OAuth Server-to-Server credentials.
 - [jira-ticket-triage-demo](https://github.com/git-agent-swarm/jira-ticket-triage-demo) — Jira Cloud ticket triage and issue payload automation proof with mocked tests.
+- [composio-tool-router-demo](https://github.com/git-agent-swarm/composio-tool-router-demo) — no-secret connector router proof for Composio-style agent tool actions.
 - [gemini-research-agent](https://github.com/git-agent-swarm/gemini-research-agent) — Gemini-powered research agent with cited output flow.
 - [leadgen-automator](https://github.com/git-agent-swarm/leadgen-automator) — local-business prospecting and outreach workflow.
 - [web-scraper-toolkit](https://github.com/broussardkobey67-spec/web-scraper-toolkit) — YAML-configured scraper to CSV/Excel.
