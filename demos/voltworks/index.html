@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    /* Canonical-domain redirect: Firebase default domains -> kobeydev.com (preserves path) */
+    (function () {
+      var h = location.hostname;
+      if (h === "kobeydev.web.app" || h === "kobeydev.firebaseapp.com") {
+        location.replace("https://kobeydev.com" + location.pathname + location.search + location.hash);
+      }
+    })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VoltWorks Electrical | Contractor Website Demo</title>

@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    /* Canonical-domain redirect: send the Firebase default domains to kobeydev.com.
+       Exact host match leaves preview channels (kobeydev--*.web.app) and the apex untouched. */
+    (function () {
+      var h = location.hostname;
+      if (h === "kobeydev.web.app" || h === "kobeydev.firebaseapp.com") {
+        location.replace("https://kobeydev.com" + location.pathname + location.search + location.hash);
+      }
+    })();
+  </script>
   <title>Kobey Dev Services — Automate the busywork. Ship software, fast.</title>
   <meta name="description" content="Kobey Dev Services — AI-assisted automation, custom software, and content operations for small and mid-size businesses. Serving US and Chinese-speaking clients." />
   <meta name="author" content="Kobey Broussard" />
