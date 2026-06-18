@@ -9,21 +9,21 @@
   <meta name="keywords" content="web developer, AI automation, AI agents, business websites, freelance developer, workflow automation, Chinese developer, bilingual developer, Python, JavaScript, Wichita Falls TX" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#050505" />
-  <link rel="canonical" href="https://kobeydev.web.app/" />
+  <link rel="canonical" href="https://kobeydev.com/" />
 
   <!-- Hreflang -->
-  <link rel="alternate" hreflang="en" href="https://kobeydev.web.app/?lang=en" />
-  <link rel="alternate" hreflang="zh" href="https://kobeydev.web.app/?lang=zh" />
-  <link rel="alternate" hreflang="x-default" href="https://kobeydev.web.app/" />
+  <link rel="alternate" hreflang="en" href="https://kobeydev.com/?lang=en" />
+  <link rel="alternate" hreflang="zh" href="https://kobeydev.com/?lang=zh" />
+  <link rel="alternate" hreflang="x-default" href="https://kobeydev.com/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Kobey Dev Services — Automate the busywork. Ship software, fast." />
   <meta property="og:description" content="AI-assisted automation, custom software, and content operations for small and mid-size businesses. Serving US and Chinese-speaking clients." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://kobeydev.web.app/" />
+  <meta property="og:url" content="https://kobeydev.com/" />
   <meta property="og:site_name" content="Kobey Dev Services" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:image" content="https://kobeydev.web.app/assets/og-image.png" />
+  <meta property="og:image" content="https://kobeydev.com/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Kobey Dev Services — websites, automation & AI agents that do real work." />
@@ -32,7 +32,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Kobey Dev Services — Automate the busywork. Ship software, fast." />
   <meta name="twitter:description" content="AI-assisted automation, custom software, and content operations for small and mid-size businesses." />
-  <meta name="twitter:image" content="https://kobeydev.web.app/assets/og-image.png" />
+  <meta name="twitter:image" content="https://kobeydev.com/assets/og-image.png" />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
@@ -40,6 +40,7 @@
   <!-- Fonts: self-hosted Latin fonts inlined to remove a render-blocking request; Chinese fonts loaded only when language is zh -->
   <style>
     /* Self-hosted Latin fonts (OFL-licensed). */
+    @font-face {
       font-family: 'Cormorant Garamond';
       font-style: italic;
       font-weight: 400;
@@ -103,25 +104,28 @@
       src: url('assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format('woff2');
       unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
     }
+    /* Self-hosted Simplified-Chinese subset (variable wght). China-safe — no Google/CDN.
+       unicode-range scopes the download to CJK, so English pages never fetch it. */
+    @font-face {
+      font-family: 'Noto Sans SC';
+      font-style: normal;
+      font-weight: 400 700;
+      font-display: swap;
+      src: url('assets/fonts/noto-sans-sc-subset.woff2') format('woff2');
+      unicode-range: U+3000-303F, U+4E00-9FFF, U+FF00-FFEF, U+00B7, U+2018-201F, U+2026;
+    }
+    @font-face {
+      font-family: 'Noto Serif SC';
+      font-style: normal;
+      font-weight: 400 700;
+      font-display: swap;
+      src: url('assets/fonts/noto-serif-sc-subset.woff2') format('woff2');
+      unicode-range: U+3000-303F, U+4E00-9FFF, U+FF00-FFEF, U+00B7, U+2018-201F, U+2026;
+    }
   </style>
   <link rel="preload" as="font" href="assets/fonts/cormorant-normal-subset.woff2" type="font/woff2" crossorigin />
-  <script>
-    (function () {
-      try {
-        const params = new URLSearchParams(location.search);
-        const stored = (function () { try { return localStorage.getItem('kds-lang'); } catch (e) { return null; } })();
-        const browser = (navigator.language || '').toLowerCase().startsWith('zh') ? 'zh' : 'en';
-        if ((params.get('lang') || stored || browser) === 'zh') {
-          const link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap';
-          link.media = 'print';
-          link.onload = function () { link.media = 'all'; };
-          document.head.appendChild(link);
-        }
-      } catch (e) {}
-    })();
-  </script>
+  <!-- Chinese fonts are self-hosted above (@font-face, CJK unicode-range) — they load
+       automatically only when Chinese is rendered. No external font CDN (China-safe). -->
 
   <link rel="stylesheet" href="css/site.css?v=20260618b" />
   <script>document.documentElement.classList.add("js");</script>
@@ -132,11 +136,11 @@
     "@graph": [
       {
         "@type": "ProfessionalService",
-        "@id": "https://kobeydev.web.app/#business",
+        "@id": "https://kobeydev.com/#business",
         "name": "Kobey Dev Services",
         "description": "AI-assisted automation, custom software, and content operations for small and mid-size businesses. Serving US and Chinese-speaking clients.",
-        "url": "https://kobeydev.web.app/",
-        "image": "https://kobeydev.web.app/assets/og-image.png",
+        "url": "https://kobeydev.com/",
+        "image": "https://kobeydev.com/assets/og-image.png",
         "telephone": "+1-337-495-6990",
         "email": "kobey@kobeydev.com",
         "priceRange": "$$",
@@ -147,7 +151,7 @@
           "addressRegion": "TX",
           "addressCountry": "US"
         },
-        "founder": {"@id": "https://kobeydev.web.app/#kobey"},
+        "founder": {"@id": "https://kobeydev.com/#kobey"},
         "knowsAbout": ["Web Development", "Workflow Automation", "AI Agents", "Python", "JavaScript", "Lead Generation", "Web Scraping", "Dashboards", "Technical Writing", "API Integrations"],
         "makesOffer": [
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Workflow Automation"}},
@@ -160,11 +164,11 @@
       },
       {
         "@type": "Person",
-        "@id": "https://kobeydev.web.app/#kobey",
+        "@id": "https://kobeydev.com/#kobey",
         "name": "Kobey Broussard",
         "jobTitle": "AI Automation & Full-Stack Developer",
-        "url": "https://kobeydev.web.app/",
-        "worksFor": {"@id": "https://kobeydev.web.app/#business"},
+        "url": "https://kobeydev.com/",
+        "worksFor": {"@id": "https://kobeydev.com/#business"},
         "knowsLanguage": ["en", "zh"],
         "address": {
           "@type": "PostalAddress",
@@ -226,7 +230,7 @@
           <a class="btn btn-primary" href="#contact" data-i18n="ctaPrimary">Start a project</a>
           <a class="btn btn-ghost" href="#work" data-i18n="ctaSecondary">Explore the work</a>
         </div>
-        <p class="hero-note reveal in" data-i18n="heroNote">也欢迎中文客户 — 可提供中文沟通与文档。</p>
+        <p class="hero-note reveal in" data-i18n="heroNote">Chinese-speaking clients welcome — Chinese communication and docs available.</p>
       </div>
     </section>
 
@@ -255,7 +259,7 @@
         <div class="showcase">
           <article class="show-card reveal" id="demo-voltworks">
             <div class="show-media">
-              <img src="assets/demos/voltworks-hero.webp" width="1280" height="800" loading="lazy" decoding="async" alt="VoltWorks Electrical website" />
+              <img src="assets/demos/voltworks-hero.webp" width="1880" height="837" loading="lazy" decoding="async" alt="VoltWorks Electrical website" />
             </div>
             <div class="show-body">
               <p class="show-tag" data-i18n="demoVoltworksTag">Electrician · Contractor</p>
@@ -270,7 +274,7 @@
 
           <article class="show-card reveal" id="demo-juniper">
             <div class="show-media">
-              <img src="assets/demos/juniper-table-hero.webp" width="1280" height="800" loading="lazy" decoding="async" alt="Juniper Table restaurant website" />
+              <img src="assets/demos/juniper-table-hero.webp" width="1849" height="851" loading="lazy" decoding="async" alt="Juniper Table restaurant website" />
             </div>
             <div class="show-body">
               <p class="show-tag" data-i18n="demoJuniperTag">Restaurant · Café · Food</p>
@@ -285,7 +289,7 @@
 
           <article class="show-card reveal" id="demo-leasepilot">
             <div class="show-media">
-              <img src="assets/demos/leasepilot-device.webp" width="1280" height="800" loading="lazy" decoding="async" alt="LeasePilot property management dashboard" />
+              <img src="assets/demos/leasepilot-device.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="LeasePilot property management dashboard" />
             </div>
             <div class="show-body">
               <p class="show-tag" data-i18n="demoLeaseTag">Property · Real estate</p>

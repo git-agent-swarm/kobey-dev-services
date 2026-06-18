@@ -147,7 +147,7 @@
       heroLead: "我帮助中小企业砍掉重复性工作，交付真正需要的定制软件——兼具工作室的精致，却没有大公司的冗余开销和高昂价格。",
       ctaPrimary: "开启项目",
       ctaSecondary: "查看作品",
-      heroNote: "Chinese-speaking clients welcome — 可提供中文沟通、中文文档与 bilingual 交付。",
+      heroNote: "也欢迎中文客户 — 可提供中文沟通、中文文档与双语交付。",
       approachLabel: "（理念）",
       approachLine1: "你不需要一支企业级团队。",
       approachLine2: "你需要的是繁琐工作消失、",
@@ -266,6 +266,10 @@
   };
 
   let currentLang = "en";
+
+  /* Chinese fonts (Noto Sans/Serif SC) are self-hosted as a variable subset in
+     index.html via @font-face + CJK unicode-range, so the browser loads them
+     automatically only when Chinese is rendered — no JS, no Google CDN needed. */
 
   function setLang(lang) {
     if (!i18n[lang]) return;
