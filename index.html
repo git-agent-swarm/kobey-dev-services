@@ -39,75 +39,7 @@
 
   <!-- Fonts: self-hosted Latin fonts inlined to remove a render-blocking request; Chinese fonts loaded only when language is zh -->
   <style>
-    /* Critical above-fold styles — render the hero before the full stylesheet loads. */
-    :root {
-      --bg: #050505; --bg-2: #0a0a0a; --surface: #111111; --surface-2: #1a1a1a; --surface-3: #222222;
-      --ink: #f5f2ea; --muted: #a8a39a; --faint: #6b665e;
-      --accent: #c9a96e; --accent-2: #e8c78a; --accent-dark: #8f7345;
-      --line: rgba(245, 242, 234, 0.08); --line-2: rgba(245, 242, 234, 0.14);
-      --r: 14px; --r-lg: 18px; --r-pill: 999px;
-      --shadow: 0 24px 60px -24px rgba(0,0,0,0.85);
-      --glow: 0 0 80px -20px rgba(201, 169, 110, 0.22);
-      --font-display: "Cormorant Garamond", "Noto Serif SC", Georgia, serif;
-      --font-body: "Inter", "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --container: 1180px; --pad: clamp(1.1rem, 4.5vw, 2.25rem);
-    }
-    * { margin: 0; box-sizing: border-box; }
-    [hidden] { display: none !important; }
-    html { scroll-behavior: smooth; overflow-x: clip; -webkit-text-size-adjust: 100%; }
-    body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip; }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
-    .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--pad); }
-    .skip-link { position: absolute; left: 50%; top: -60px; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 0 0 12px 12px; font-weight: 600; z-index: 200; transition: top .2s ease; }
-    .skip-link:focus { top: 0; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .4em; font-family: var(--font-body); font-weight: 500; font-size: 0.97rem; padding: 0.9rem 1.6rem; border-radius: var(--r-pill); border: 1px solid transparent; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease; white-space: nowrap; }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: var(--accent); color: #121212; box-shadow: 0 10px 30px -10px rgba(201, 169, 110, 0.45); }
-    .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-2); }
-    .site-header { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: rgba(5, 5, 5, 0.78); border-bottom: 1px solid transparent; }
-    .nav-bar { display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: 1rem; }
-    .brand { display: inline-flex; align-items: center; gap: .7rem; font-family: var(--font-display); font-weight: 600; }
-    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--line-2); border-radius: 50%; font-size: 1.1rem; color: var(--accent); }
-    .brand-name { font-size: 1.25rem; }
-    .nav-menu { display: flex; align-items: center; gap: 2rem; }
-    .nav-menu a { color: var(--muted); font-size: 0.92rem; font-weight: 500; letter-spacing: 0.02em; }
-    .header-actions { display: flex; align-items: center; gap: 1rem; }
-    .lang-toggle { display: inline-flex; align-items: center; gap: .35rem; background: transparent; border: 1px solid var(--line-2); border-radius: var(--r-pill); padding: 0.35rem 0.7rem; color: var(--muted); font-size: 0.82rem; }
-    .lang-option.active { color: var(--accent); font-weight: 600; }
-    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 8px; }
-    .nav-toggle span { width: 24px; height: 2px; background: var(--ink); border-radius: 2px; }
-    .hero { position: relative; min-height: 90vh; padding: clamp(5rem, 14vh, 10rem) 0 clamp(4rem, 10vh, 7rem); overflow: clip; }
-    .hero-glow { position: absolute; inset: -20% -10% auto -10%; height: 80vh; pointer-events: none; z-index: 0; background: radial-gradient(700px 420px at 18% 10%, rgba(201, 169, 110, 0.14), transparent 65%), radial-gradient(500px 360px at 85% 5%, rgba(232, 199, 138, 0.08), transparent 60%); filter: blur(10px); }
-    .hero-inner { position: relative; z-index: 1; max-width: 900px; }
-    .eyebrow { display: inline-block; font-family: var(--font-body); font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.74rem; color: var(--accent); margin-bottom: 1.4rem; }
-    .hero-title { font-size: clamp(3rem, 8vw, 6.5rem); line-height: 1.02; margin-bottom: 1.6rem; }
-    .hero-title em { font-style: italic; color: var(--accent-2); }
-    .hero-lead { font-size: clamp(1.05rem, 2vw, 1.35rem); color: var(--muted); max-width: 620px; margin-bottom: 2.4rem; }
-    .hero-actions { display: flex; gap: .9rem; flex-wrap: wrap; margin-bottom: 1.6rem; }
-    .hero-note { color: var(--faint); font-size: 0.95rem; }
-    .reveal { opacity: 1; transform: none; }
-    html.js .reveal { opacity: 1; transform: none; }
-    @media (max-width: 860px) {
-      .nav-toggle { display: flex; }
-      .nav-menu { position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); padding: .5rem var(--pad) 1.2rem; transform: translateY(-12px); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; }
-      .nav-menu.open { opacity: 1; transform: none; pointer-events: auto; }
-      .nav-menu a { padding: .9rem 0; border-bottom: 1px solid var(--line); }
-    }
-    @media (max-width: 640px) {
-      body { font-size: 16px; }
-      .hero-title { font-size: clamp(2.6rem, 11vw, 4rem); }
-      .hero-actions { flex-direction: column; }
-      .hero-actions .btn { width: 100%; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
-    }
-
     /* Self-hosted Latin fonts (OFL-licensed). */
-    @font-face {
       font-family: 'Cormorant Garamond';
       font-style: italic;
       font-weight: 400;
@@ -191,9 +123,7 @@
     })();
   </script>
 
-  <link rel="preload" as="style" href="css/site.css?v=20260618b" />
-  <link rel="stylesheet" href="css/site.css?v=20260618b" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="css/site.css?v=20260618b" /></noscript>
+  <link rel="stylesheet" href="css/site.css?v=20260618b" />
   <script>document.documentElement.classList.add("js");</script>
 
   <script type="application/ld+json">
