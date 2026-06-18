@@ -34,7 +34,10 @@ window.sendLead = async (payload) => {
     name: payload.name,
     email: payload.email,
     phone: payload.phone || "",
+    company: payload.company || "",
+    needs: payload.needs || "",
     message: payload.message,
+    language: payload.language || "en",
     source: "kobeydevservices",
     createdAt: serverTimestamp(),
   });

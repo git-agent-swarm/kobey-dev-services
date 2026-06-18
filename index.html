@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kobey Broussard | Kobey Dev Services — AI Automation & Web Development</title>
-  <meta name="description" content="Kobey Broussard (Kobey Dev Services) — I build business websites, lead-capture forms, workflow automation, and AI agents for small businesses and startups. Wichita Falls, TX. Available for freelance & contract work." />
+  <title>Kobey Dev Services — Automate the busywork. Ship software, fast.</title>
+  <meta name="description" content="Kobey Dev Services — AI-assisted automation, custom software, and content operations for small and mid-size businesses. Serving US and Chinese-speaking clients." />
   <meta name="author" content="Kobey Broussard" />
-  <meta name="keywords" content="web developer, AI automation, AI agents, business websites, freelance developer, workflow automation, Python, JavaScript, Wichita Falls TX, small business websites" />
+  <meta name="keywords" content="web developer, AI automation, AI agents, business websites, freelance developer, workflow automation, Chinese developer, bilingual developer, Python, JavaScript, Wichita Falls TX" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="theme-color" content="#4f46e5" />
+  <meta name="theme-color" content="#050505" />
   <link rel="canonical" href="https://kobeydev.web.app/" />
 
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="en" href="https://kobeydev.web.app/?lang=en" />
+  <link rel="alternate" hreflang="zh" href="https://kobeydev.web.app/?lang=zh" />
+  <link rel="alternate" hreflang="x-default" href="https://kobeydev.web.app/" />
+
   <!-- Open Graph -->
-  <meta property="og:title" content="Kobey Broussard | Kobey Dev Services" />
-  <meta property="og:description" content="Websites, automation, and AI agents that do real work — built fast, built right." />
+  <meta property="og:title" content="Kobey Dev Services — Automate the busywork. Ship software, fast." />
+  <meta property="og:description" content="AI-assisted automation, custom software, and content operations for small and mid-size businesses. Serving US and Chinese-speaking clients." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kobeydev.web.app/" />
   <meta property="og:site_name" content="Kobey Dev Services" />
@@ -25,16 +30,171 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Kobey Broussard | Kobey Dev Services" />
-  <meta name="twitter:description" content="Websites, automation, and AI agents that do real work — built fast, built right." />
+  <meta name="twitter:title" content="Kobey Dev Services — Automate the busywork. Ship software, fast." />
+  <meta name="twitter:description" content="AI-assisted automation, custom software, and content operations for small and mid-size businesses." />
   <meta name="twitter:image" content="https://kobeydev.web.app/assets/og-image.png" />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20260613" />
+
+  <!-- Fonts: self-hosted Latin fonts inlined to remove a render-blocking request; Chinese fonts loaded only when language is zh -->
+  <style>
+    /* Critical above-fold styles — render the hero before the full stylesheet loads. */
+    :root {
+      --bg: #050505; --bg-2: #0a0a0a; --surface: #111111; --surface-2: #1a1a1a; --surface-3: #222222;
+      --ink: #f5f2ea; --muted: #a8a39a; --faint: #6b665e;
+      --accent: #c9a96e; --accent-2: #e8c78a; --accent-dark: #8f7345;
+      --line: rgba(245, 242, 234, 0.08); --line-2: rgba(245, 242, 234, 0.14);
+      --r: 14px; --r-lg: 18px; --r-pill: 999px;
+      --shadow: 0 24px 60px -24px rgba(0,0,0,0.85);
+      --glow: 0 0 80px -20px rgba(201, 169, 110, 0.22);
+      --font-display: "Cormorant Garamond", "Noto Serif SC", Georgia, serif;
+      --font-body: "Inter", "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --container: 1180px; --pad: clamp(1.1rem, 4.5vw, 2.25rem);
+    }
+    * { margin: 0; box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html { scroll-behavior: smooth; overflow-x: clip; -webkit-text-size-adjust: 100%; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+    .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--pad); }
+    .skip-link { position: absolute; left: 50%; top: -60px; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 0 0 12px 12px; font-weight: 600; z-index: 200; transition: top .2s ease; }
+    .skip-link:focus { top: 0; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .4em; font-family: var(--font-body); font-weight: 500; font-size: 0.97rem; padding: 0.9rem 1.6rem; border-radius: var(--r-pill); border: 1px solid transparent; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease; white-space: nowrap; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); color: #121212; box-shadow: 0 10px 30px -10px rgba(201, 169, 110, 0.45); }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-2); }
+    .site-header { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: rgba(5, 5, 5, 0.78); border-bottom: 1px solid transparent; }
+    .nav-bar { display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: 1rem; }
+    .brand { display: inline-flex; align-items: center; gap: .7rem; font-family: var(--font-display); font-weight: 600; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--line-2); border-radius: 50%; font-size: 1.1rem; color: var(--accent); }
+    .brand-name { font-size: 1.25rem; }
+    .nav-menu { display: flex; align-items: center; gap: 2rem; }
+    .nav-menu a { color: var(--muted); font-size: 0.92rem; font-weight: 500; letter-spacing: 0.02em; }
+    .header-actions { display: flex; align-items: center; gap: 1rem; }
+    .lang-toggle { display: inline-flex; align-items: center; gap: .35rem; background: transparent; border: 1px solid var(--line-2); border-radius: var(--r-pill); padding: 0.35rem 0.7rem; color: var(--muted); font-size: 0.82rem; }
+    .lang-option.active { color: var(--accent); font-weight: 600; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 8px; }
+    .nav-toggle span { width: 24px; height: 2px; background: var(--ink); border-radius: 2px; }
+    .hero { position: relative; min-height: 90vh; padding: clamp(5rem, 14vh, 10rem) 0 clamp(4rem, 10vh, 7rem); overflow: clip; }
+    .hero-glow { position: absolute; inset: -20% -10% auto -10%; height: 80vh; pointer-events: none; z-index: 0; background: radial-gradient(700px 420px at 18% 10%, rgba(201, 169, 110, 0.14), transparent 65%), radial-gradient(500px 360px at 85% 5%, rgba(232, 199, 138, 0.08), transparent 60%); filter: blur(10px); }
+    .hero-inner { position: relative; z-index: 1; max-width: 900px; }
+    .eyebrow { display: inline-block; font-family: var(--font-body); font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.74rem; color: var(--accent); margin-bottom: 1.4rem; }
+    .hero-title { font-size: clamp(3rem, 8vw, 6.5rem); line-height: 1.02; margin-bottom: 1.6rem; }
+    .hero-title em { font-style: italic; color: var(--accent-2); }
+    .hero-lead { font-size: clamp(1.05rem, 2vw, 1.35rem); color: var(--muted); max-width: 620px; margin-bottom: 2.4rem; }
+    .hero-actions { display: flex; gap: .9rem; flex-wrap: wrap; margin-bottom: 1.6rem; }
+    .hero-note { color: var(--faint); font-size: 0.95rem; }
+    .reveal { opacity: 1; transform: none; }
+    html.js .reveal { opacity: 1; transform: none; }
+    @media (max-width: 860px) {
+      .nav-toggle { display: flex; }
+      .nav-menu { position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); padding: .5rem var(--pad) 1.2rem; transform: translateY(-12px); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; }
+      .nav-menu.open { opacity: 1; transform: none; pointer-events: auto; }
+      .nav-menu a { padding: .9rem 0; border-bottom: 1px solid var(--line); }
+    }
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .hero-title { font-size: clamp(2.6rem, 11vw, 4rem); }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+    }
+
+    /* Self-hosted Latin fonts (OFL-licensed). */
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/cormorant-italic-subset.woff2') format('woff2');
+      unicode-range: U+21-22, U+24-29, U+2c-3b, U+3f-5b, U+5d, U+61-7a, U+b7, U+2013-2014;
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/cormorant-normal-subset.woff2') format('woff2');
+      unicode-range: U+21-22, U+24-29, U+2c-3b, U+3f-5b, U+5d, U+61-7a, U+b7, U+2013-2014;
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('assets/fonts/cormorant-normal-subset.woff2') format('woff2');
+      unicode-range: U+21-22, U+24-29, U+2c-3b, U+3f-5b, U+5d, U+61-7a, U+b7, U+2013-2014;
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('assets/fonts/cormorant-normal-subset.woff2') format('woff2');
+      unicode-range: U+21-22, U+24-29, U+2c-3b, U+3f-5b, U+5d, U+61-7a, U+b7, U+2013-2014;
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('assets/fonts/cormorant-normal-subset.woff2') format('woff2');
+      unicode-range: U+21-22, U+24-29, U+2c-3b, U+3f-5b, U+5d, U+61-7a, U+b7, U+2013-2014;
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+  </style>
+  <link rel="preload" as="font" href="assets/fonts/cormorant-normal-subset.woff2" type="font/woff2" crossorigin />
+  <script>
+    (function () {
+      try {
+        const params = new URLSearchParams(location.search);
+        const stored = (function () { try { return localStorage.getItem('kds-lang'); } catch (e) { return null; } })();
+        const browser = (navigator.language || '').toLowerCase().startsWith('zh') ? 'zh' : 'en';
+        if ((params.get('lang') || stored || browser) === 'zh') {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap';
+          link.media = 'print';
+          link.onload = function () { link.media = 'all'; };
+          document.head.appendChild(link);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preload" as="style" href="css/site.css?v=20260618b" />
+  <link rel="stylesheet" href="css/site.css?v=20260618b" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="css/site.css?v=20260618b" /></noscript>
+  <script>document.documentElement.classList.add("js");</script>
 
   <script type="application/ld+json">
   {
@@ -44,28 +204,28 @@
         "@type": "ProfessionalService",
         "@id": "https://kobeydev.web.app/#business",
         "name": "Kobey Dev Services",
-        "description": "Web development, workflow automation, AI agents, data cleanup, dashboards, and technical writing for small businesses and startups.",
+        "description": "AI-assisted automation, custom software, and content operations for small and mid-size businesses. Serving US and Chinese-speaking clients.",
         "url": "https://kobeydev.web.app/",
         "image": "https://kobeydev.web.app/assets/og-image.png",
         "telephone": "+1-337-495-6990",
         "email": "kobey@kobeydev.com",
         "priceRange": "$$",
-        "areaServed": { "@type": "Country", "name": "United States" },
+        "areaServed": [{"@type": "Country", "name": "United States"}, {"@type": "Country", "name": "China"}],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Wichita Falls",
           "addressRegion": "TX",
           "addressCountry": "US"
         },
-        "founder": { "@id": "https://kobeydev.web.app/#kobey" },
-        "knowsAbout": ["Web Development", "Workflow Automation", "AI Agents", "Python", "JavaScript", "Lead Generation", "Web Scraping", "Dashboards", "Technical Writing"],
+        "founder": {"@id": "https://kobeydev.web.app/#kobey"},
+        "knowsAbout": ["Web Development", "Workflow Automation", "AI Agents", "Python", "JavaScript", "Lead Generation", "Web Scraping", "Dashboards", "Technical Writing", "API Integrations"],
         "makesOffer": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business websites" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lead capture & forms" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Workflow automation" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI agents & assistants" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data scraping & cleanup" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technical writing & documentation" } }
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Workflow Automation"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom AI Agents"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dashboards & Data"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "API Integrations"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Small Apps & POCs"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Technical Content"}}
         ]
       },
       {
@@ -74,8 +234,8 @@
         "name": "Kobey Broussard",
         "jobTitle": "AI Automation & Full-Stack Developer",
         "url": "https://kobeydev.web.app/",
-        "worksFor": { "@id": "https://kobeydev.web.app/#business" },
-        "knowsLanguage": "en",
+        "worksFor": {"@id": "https://kobeydev.web.app/#business"},
+        "knowsLanguage": ["en", "zh"],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Wichita Falls",
@@ -91,394 +251,344 @@
     ]
   }
   </script>
-  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="skipLink">Skip to content</a>
 
   <header class="site-header" id="top">
     <div class="container nav-bar">
       <a class="brand" href="#top" aria-label="Kobey Dev Services home">
-        <span class="brand-mark" aria-hidden="true">&lt;K/&gt;</span>
+        <span class="brand-mark" aria-hidden="true">K</span>
         <span class="brand-name">Kobey Dev Services</span>
       </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
       <nav id="nav-menu" class="nav-menu" aria-label="Primary">
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a class="btn btn-sm" href="#contact">Get a free consult</a>
+        <a href="#work" data-i18n="navWork">Work</a>
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#process" data-i18n="navProcess">Process</a>
+        <a href="#pricing" data-i18n="navPricing">Pricing</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
+      <div class="header-actions">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language" type="button">
+          <span class="lang-option active" data-lang="en">EN</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-option" data-lang="zh">中文</span>
+        </button>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu" type="button">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main">
     <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-inner reveal">
-        <p class="eyebrow">Kobey Broussard · AI Automation &amp; Full-Stack Developer</p>
-        <h1>Websites, automation &amp; AI agents that<br><span class="grad">do real work.</span></h1>
-        <p class="lead">I help small businesses and startups ship fast, modern websites,
-          capture every lead, and automate the repetitive work — so you can focus on the
-          business, not the busywork.</p>
-        <div class="hero-actions">
-          <a class="btn" href="#contact">Get a free 15-min consult</a>
-          <a class="btn btn-ghost" href="#work">See live work →</a>
+    <section class="hero" id="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="eyebrow reveal in" data-i18n="heroEyebrow">AI-assisted automation · software · content</p>
+        <h1 class="hero-title reveal in">
+          <span data-i18n="heroTitle1">Automate the busywork.</span><br />
+          <em data-i18n="heroTitle2">Ship software, fast.</em>
+        </h1>
+        <p class="hero-lead reveal in" data-i18n="heroLead">I help small and mid-size businesses cut the repetitive work and ship the custom software they actually need — with the craft of a studio, minus the enterprise overhead or price tag.</p>
+        <div class="hero-actions reveal in">
+          <a class="btn btn-primary" href="#contact" data-i18n="ctaPrimary">Start a project</a>
+          <a class="btn btn-ghost" href="#work" data-i18n="ctaSecondary">Explore the work</a>
         </div>
-        <ul class="trust-row">
-          <li><strong>20+</strong> public projects shipped</li>
-          <li><strong>Live</strong> demos you can click</li>
-          <li><strong>Wichita Falls, TX</strong> · remote-friendly</li>
-        </ul>
-        <div class="cred-strip" aria-label="Credibility signals">
-          <a href="https://me.developers.google.com/u/116492041557080639666" target="_blank" rel="noopener">
-            Google Developer badges: Gemini Enterprise Agent Ready, Firebase Studio, Google Cloud &amp; NVIDIA
-          </a>
-          <a href="https://github.com/git-agent-swarm" target="_blank" rel="noopener">
-            Public GitHub org with live demos and documented code
-          </a>
-          <a href="https://cedarstone-demo.web.app" target="_blank" rel="noopener">
-            Firebase-hosted lead capture demo
-          </a>
+        <p class="hero-note reveal in" data-i18n="heroNote">也欢迎中文客户 — 可提供中文沟通与文档。</p>
+      </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section class="section section-approach" id="approach">
+      <div class="container">
+        <p class="section-label reveal" data-i18n="approachLabel">(Approach)</p>
+        <h2 class="section-title reveal">
+          <span data-i18n="approachLine1">You don't need an enterprise team.</span>
+          <span data-i18n="approachLine2">You need the busywork gone,</span>
+          <span data-i18n="approachLine3">the right tools talking to each other,</span>
+          <span data-i18n="approachLine4">and software that ships in days —</span>
+          <span data-i18n="approachLine5">not quarters.</span>
+        </h2>
+        <p class="section-body reveal" data-i18n="approachBody">I design the systems, wire the integrations, and put AI to work only where it actually earns its place. Real tools, real handover, real ownership — no theatre, no lock-in.</p>
+      </div>
+    </section>
+
+    <!-- WORK / PROOF -->
+    <section class="section section-work" id="work">
+      <div class="container">
+        <p class="section-label reveal" data-i18n="workLabel">(Proof, not promises)</p>
+        <h2 class="section-title reveal" data-i18n="workTitle">Real sites I've built — click any of them.</h2>
+        <p class="section-subtitle reveal" data-i18n="workSubtitle">Whatever your business is, you're looking at the bar I build to.</p>
+
+        <div class="showcase">
+          <article class="show-card reveal" id="demo-voltworks">
+            <div class="show-media">
+              <img src="assets/demos/voltworks-hero.webp" width="1280" height="800" loading="lazy" decoding="async" alt="VoltWorks Electrical website" />
+            </div>
+            <div class="show-body">
+              <p class="show-tag" data-i18n="demoVoltworksTag">Electrician · Contractor</p>
+              <h3 data-i18n="demoVoltworksTitle">VoltWorks Electrical</h3>
+              <p data-i18n="demoVoltworksDesc">A trade-contractor site that wins jobs: service pages, an instant quote estimator, emergency intake, and project proof.</p>
+              <div class="show-links">
+                <a class="pill pill-live" href="demos/voltworks/" target="_blank" rel="noopener" data-i18n="liveDemo">▶ Live demo</a>
+                <a class="pill" href="https://github.com/git-agent-swarm/kobey-dev-services/tree/main/demos/voltworks" target="_blank" rel="noopener" data-i18n="viewCode">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="show-card reveal" id="demo-juniper">
+            <div class="show-media">
+              <img src="assets/demos/juniper-table-hero.webp" width="1280" height="800" loading="lazy" decoding="async" alt="Juniper Table restaurant website" />
+            </div>
+            <div class="show-body">
+              <p class="show-tag" data-i18n="demoJuniperTag">Restaurant · Café · Food</p>
+              <h3 data-i18n="demoJuniperTitle">Juniper Table</h3>
+              <p data-i18n="demoJuniperDesc">A restaurant site that fills tables: reservations, order-ahead cart, beautiful menu cards, private-dining CTA, hours, and reviews.</p>
+              <div class="show-links">
+                <a class="pill pill-live" href="demos/juniper-table/" target="_blank" rel="noopener" data-i18n="liveDemo">▶ Live demo</a>
+                <a class="pill" href="https://github.com/git-agent-swarm/kobey-dev-services/tree/main/demos/juniper-table" target="_blank" rel="noopener" data-i18n="viewCode">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="show-card reveal" id="demo-leasepilot">
+            <div class="show-media">
+              <img src="assets/demos/leasepilot-device.webp" width="1280" height="800" loading="lazy" decoding="async" alt="LeasePilot property management dashboard" />
+            </div>
+            <div class="show-body">
+              <p class="show-tag" data-i18n="demoLeaseTag">Property · Real estate</p>
+              <h3 data-i18n="demoLeaseTitle">LeasePilot</h3>
+              <p data-i18n="demoLeaseDesc">An operations dashboard for property managers: maintenance tickets, SLA risk, vendor assignment, rent status, and inspection schedules.</p>
+              <div class="show-links">
+                <a class="pill pill-live" href="demos/leasepilot/" target="_blank" rel="noopener" data-i18n="liveDemo">▶ Live demo</a>
+                <a class="pill" href="https://github.com/git-agent-swarm/kobey-dev-services/tree/main/demos/leasepilot" target="_blank" rel="noopener" data-i18n="viewCode">Code</a>
+              </div>
+            </div>
+          </article>
         </div>
+
+        <p class="work-more reveal" data-i18n="workMore">And 17+ deeper builds — AI agents, Azure Functions, Auth0, NVIDIA NIM, scrapers, dashboards — on <a href="https://github.com/git-agent-swarm" target="_blank" rel="noopener">my GitHub org</a>.</p>
       </div>
     </section>
 
     <!-- SERVICES -->
-    <section class="section" id="services">
+    <section class="section section-services" id="services">
       <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">What I build</p>
-          <h2>Pick the problem — I'll handle the rest</h2>
-          <p class="section-sub">Clear, fixed-scope packages. No jargon, no surprises.</p>
-        </header>
-        <div class="card-grid">
-          <article class="card reveal">
-            <div class="card-icon">🌐</div>
-            <h3>Business websites</h3>
-            <p>A fast, mobile-friendly site that loads instantly and looks professional —
-              with a contact form that actually captures leads.</p>
-            <p class="card-tag">Fixed scope · live in days</p>
+        <p class="section-label reveal" data-i18n="servicesLabel">(01 — Services)</p>
+        <h2 class="section-title reveal" data-i18n="servicesTitle">What I build</h2>
+        <p class="section-subtitle reveal" data-i18n="servicesSubtitle">Six ways I take work off your plate — pick one, or string them together into something that runs itself.</p>
+
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <span class="service-num">01↗</span>
+            <h3 data-i18n="svc1Title">Workflow Automation</h3>
+            <p data-i18n="svc1Desc">Map the busywork, then make it disappear. Zapier, Make, n8n, or custom scripts that run quietly in the background while you do the work that matters.</p>
           </article>
-          <article class="card reveal">
-            <div class="card-icon">📥</div>
-            <h3>Lead capture &amp; forms</h3>
-            <p>Forms wired straight to your inbox, a spreadsheet, or a database — so no
-              inquiry ever slips through the cracks.</p>
-            <p class="card-tag">See it working below</p>
+          <article class="service-card reveal">
+            <span class="service-num">02↗</span>
+            <h3 data-i18n="svc2Title">Custom AI Agents</h3>
+            <p data-i18n="svc2Desc">Assistants tuned to your data and your voice — drafting, triaging, researching, and answering on autopilot, with you firmly in control.</p>
           </article>
-          <article class="card reveal">
-            <div class="card-icon">⚙️</div>
-            <h3>Workflow automation</h3>
-            <p>Automate the repetitive: data entry, reports, web scraping, CRM &amp; Sheets
-              sync, email follow-ups. Save hours every week.</p>
-            <p class="card-tag">Python · APIs · scheduled jobs</p>
+          <article class="service-card reveal">
+            <span class="service-num">03↗</span>
+            <h3 data-i18n="svc3Title">Dashboards &amp; Data</h3>
+            <p data-i18n="svc3Desc">Clean the mess, connect the sources, and turn scattered data into dashboards you'll actually open every morning.</p>
           </article>
-          <article class="card reveal">
-            <div class="card-icon">🤖</div>
-            <h3>AI agents &amp; assistants</h3>
-            <p>Custom AI that researches, drafts, classifies, and takes action — built on
-              the latest models and grounded in your data.</p>
-            <p class="card-tag">Gemini · agents · RAG</p>
+          <article class="service-card reveal">
+            <span class="service-num">04↗</span>
+            <h3 data-i18n="svc4Title">API Integrations</h3>
+            <p data-i18n="svc4Desc">Make your stack talk. Reliable, well-documented connections between the tools you already pay for — no more copy-paste between tabs.</p>
           </article>
-          <article class="card reveal">
-            <div class="card-icon">📊</div>
-            <h3>Reports &amp; dashboards</h3>
-            <p>API data pulled into clean CSVs, charts, HTML reports, Google Sheets, or
-              lightweight dashboards your team can actually use.</p>
-            <p class="card-tag">APIs · pandas · charts</p>
+          <article class="service-card reveal">
+            <span class="service-num">05↗</span>
+            <h3 data-i18n="svc5Title">Small Apps &amp; POCs</h3>
+            <p data-i18n="svc5Desc">From idea to working prototype, fast. Internal tools, MVPs, and proofs-of-concept that ship — built to be expanded, not thrown away.</p>
           </article>
-          <article class="card reveal">
-            <div class="card-icon">✍️</div>
-            <h3>Writing &amp; documentation</h3>
-            <p>Technical guides, SOPs, product docs, client handoff notes, proposals, and
-              content systems written clearly and shipped with the build.</p>
-            <p class="card-tag">Docs · SOPs · handoff</p>
+          <article class="service-card reveal">
+            <span class="service-num">06↗</span>
+            <h3 data-i18n="svc6Title">Technical Content</h3>
+            <p data-i18n="svc6Desc">Docs, guides, and developer-grade content that explains the hard parts clearly — so people actually use what you build.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- WORK -->
-    <section class="section section-alt" id="work">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Proof, not promises</p>
-          <h2>20+ real projects you can inspect</h2>
-          <p class="section-sub">Websites, client-style app demos, automations, AI agents,
-            data tools, dashboards, and one game sample. Public code first, live demos where the work is meant to run in a browser.</p>
-        </header>
-        <div class="work-grid">
-          <article class="work-card reveal">
-            <h3>Kobey Dev Services proof hub</h3>
-            <p>The site you are reading now: service positioning, proof links, contact pipeline,
-              Firebase Hosting, SEO metadata, and public credibility signals in one place.</p>
-            <div class="work-links">
-              <a class="pill pill-live" href="https://kobeydev.web.app" target="_blank" rel="noopener">Live site</a>
-              <a class="pill" href="https://github.com/git-agent-swarm/kobey-dev-services" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>Cedar &amp; Stone — business site</h3>
-            <p>A complete small-business website with a contact form that writes leads to a
-              real database. Fast, responsive, accessible.</p>
-            <div class="work-links">
-              <a class="pill pill-live" href="https://cedarstone-demo.web.app" target="_blank" rel="noopener">▶ Live demo</a>
-              <a class="pill" href="https://github.com/git-agent-swarm/smallbiz-website" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>VoltWorks Electrical demo</h3>
-            <p>A client-style electrical contractor website with premium trade visuals, service
-              pages, quote estimator, emergency intake, project proof, and responsive layout.</p>
-            <div class="work-links">
-              <a class="pill pill-live" href="https://kobeydev.web.app/demos/voltworks/" target="_blank" rel="noopener">Live demo</a>
-              <a class="pill" href="https://github.com/git-agent-swarm/kobey-dev-services/tree/main/demos/voltworks" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>VitalLoop health app demo</h3>
-            <p>A polished health and wellness dashboard with filters, task completion, sleep
-              chart, medication list, appointment card, hydration, meals, and symptom notes.</p>
-            <div class="work-links">
-              <a class="pill pill-live" href="https://kobeydev.web.app/demos/vitalloop/" target="_blank" rel="noopener">Live demo</a>
-              <a class="pill" href="https://github.com/git-agent-swarm/kobey-dev-services/tree/main/demos/vitalloop" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>Juniper Table restaurant demo</h3>
-            <p>A premium restaurant website with reservations, order-ahead cart, menu cards,
-              private dining CTA, hours, location, reviews, and responsive hospitality UI.</p>
-            <div class="work-links">
-              <a class="pill pill-live" href="https://kobeydev.web.app/demos/juniper-table/" target="_blank" rel="noopener">Live demo</a>
-              <a class="pill" href="https://github.com/git-agent-swarm/kobey-dev-services/tree/main/demos/juniper-table" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>LeasePilot property app demo</h3>
-            <p>An operations dashboard for property managers: maintenance tickets, SLA risk,
-              vendor assignment, rent status, inspection schedule, and work-order drawer.</p>
-            <div class="work-links">
-              <a class="pill pill-live" href="https://kobeydev.web.app/demos/leasepilot/" target="_blank" rel="noopener">Live demo</a>
-              <a class="pill" href="https://github.com/git-agent-swarm/kobey-dev-services/tree/main/demos/leasepilot" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>AI research agent</h3>
-            <p>An autonomous agent built on Google Gemini that plans web searches, reads the
-              sources, and writes a clear, cited answer. Compact Python, practical agent flow.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/git-agent-swarm/gemini-research-agent" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>Lead-gen automation tool</h3>
-            <p>A CLI that finds local businesses with weak websites, scores the opportunity,
-              and drafts personalized outreach — the kind of automation I build for clients.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/git-agent-swarm/leadgen-automator" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>Invoice follow-up automation</h3>
-            <p>A small-business workflow demo: invoice CSV in, overdue queue, email drafts,
-              and owner dashboard out. Built to connect later with Gmail, Stripe, or Sheets.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/git-agent-swarm/invoice-followup-automation" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>NVIDIA NIM agent demo</h3>
-            <p>Python agents for document analysis, code review, and model selection using
-              NVIDIA NIM's OpenAI-compatible API with offline tests and no bundled secrets.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/git-agent-swarm/nvidia-nim-agent-demo" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>Auth0 JWT API demo</h3>
-            <p>A dependency-light Node API guard that verifies Auth0-style RS256 JWTs:
-              issuer, audience, time claims, signature, scopes, JWKS fetch, and tests.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/git-agent-swarm/auth0-jwt-api-demo" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>Azure Functions lead router</h3>
-            <p>A serverless-style lead intake workflow that validates website leads, scores
-              urgency, routes queues, and creates owner notification payloads with tests.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/git-agent-swarm/azure-functions-lead-router-demo" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>Adobe OAuth server-to-server demo</h3>
-            <p>A backend Node token-client proof for Adobe Developer Console OAuth credentials:
-              client credentials request building, scope handling, token caching, redacted failures, and tests.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/git-agent-swarm/adobe-oauth-server-to-server-demo" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>Jira ticket triage demo</h3>
-            <p>A workflow automation proof that turns messy client/support intake into Jira Cloud issue payloads
-              with priority scoring, labels, ADF descriptions, auth handling, and mocked tests.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/git-agent-swarm/jira-ticket-triage-demo" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>Composio tool router demo</h3>
-            <p>An AI-agent connector proof for routing Composio-style actions with tool ranking,
-              user-scoped plans, approval gates, dry runs, redaction, and mocked execution.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/git-agent-swarm/composio-tool-router-demo" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>Web scraper toolkit</h3>
-            <p>Config-driven scraper for turning messy websites into clean CSV/Excel files.
-              Includes pagination, retries, dedupe, rate limits, and optional Playwright.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/broussardkobey67-spec/web-scraper-toolkit" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>API report automation</h3>
-            <p>Schedule-ready Python reporting: pulls live API data, saves CSV, renders a
-              chart, and publishes a standalone HTML report.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/broussardkobey67-spec/api-report-automation" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>Options screener</h3>
-            <p>A config-driven Python screener for US option chains. Filters by DTE, open
-              interest, implied volatility, moneyness, and risk/reward, then exports CSV and HTML.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/broussardkobey67-spec/options-screener" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>Short-straddle backtest</h3>
-            <p>An intraday options backtest engine with stop-loss, re-entry, no-overnight
-              square-off, and summary reporting. Shows data modeling and risk-rule implementation.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/broussardkobey67-spec/nifty-straddle-backtest" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="work-card reveal">
-            <h3>Karma Climb</h3>
-            <p>The game sample: a Reddit Devvit Higher-or-Lower app with real upvote data, daily climbs,
-              streaks, leaderboards, and share cards under tight platform constraints.</p>
-            <div class="work-links">
-              <a class="pill" href="https://github.com/git-agent-swarm/karmaclimb" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
+    <!-- PROCESS -->
+    <section class="section section-process" id="process">
+      <div class="container process-grid">
+        <div class="process-intro">
+          <p class="section-label reveal" data-i18n="processLabel">(02 — Process)</p>
+          <h2 class="section-title reveal" data-i18n="processTitle">How the work happens</h2>
+          <p class="section-subtitle reveal" data-i18n="processSubtitle">A tight, transparent loop from first conversation to handover. You always know where things stand and what's next.</p>
         </div>
-        <p class="work-more reveal">More on
-          <a href="https://github.com/broussardkobey67-spec" target="_blank" rel="noopener">GitHub</a> ·
-          <a href="https://gitlab.com/broussardkobey67" target="_blank" rel="noopener">GitLab</a> ·
-          <a href="https://me.developers.google.com/u/116492041557080639666" target="_blank" rel="noopener">Google Developer profile</a>
-        </p>
+        <ol class="process-steps">
+          <li class="reveal">
+            <span class="step-num">01</span>
+            <h3 data-i18n="step1Title">Audit</h3>
+            <p data-i18n="step1Desc">We find the busywork. A focused look at where your time leaks and what's worth automating first.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num">02</span>
+            <h3 data-i18n="step2Title">Blueprint</h3>
+            <p data-i18n="step2Desc">A clear plan — scope, tools, and the fastest path to value. No surprises, no bloat, no jargon.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num">03</span>
+            <h3 data-i18n="step3Title">Build</h3>
+            <p data-i18n="step3Desc">I work in tight loops, shipping working pieces early so you see real progress instead of promises.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num">04</span>
+            <h3 data-i18n="step4Title">Ship</h3>
+            <p data-i18n="step4Desc">Tested, documented, and handed over — running inside your stack and fully owned by you.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num">05</span>
+            <h3 data-i18n="step5Title">Care</h3>
+            <p data-i18n="step5Desc">Optional ongoing support to tune, extend, and keep everything humming as you grow.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <!-- CREDENTIALS -->
-    <section class="section" id="credentials">
+    <!-- PRICING -->
+    <section class="section section-pricing" id="pricing">
       <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Credibility</p>
-          <h2>Public proof customers can inspect</h2>
-          <p class="section-sub">Badges, code, deployments, and working demos are linked
-            publicly so buyers can verify the work before hiring.</p>
-        </header>
-        <div class="proof-grid">
-          <article class="proof-card reveal">
-            <h3>Google Developer Program</h3>
-            <p>Public badges include Gemini Enterprise Agent Ready, Firebase Studio Developer
-              Community, Google Maps Platform Innovators, and Google Cloud &amp; NVIDIA community.</p>
-            <a href="https://me.developers.google.com/u/116492041557080639666" target="_blank" rel="noopener">View profile</a>
+        <p class="section-label reveal" data-i18n="pricingLabel">(03 — Engagements)</p>
+        <h2 class="section-title reveal" data-i18n="pricingTitle">Transparent pricing</h2>
+        <p class="section-subtitle reveal" data-i18n="pricingSubtitle">Honest starting points, not a maze. Every project is scoped to your problem — these are where the conversation begins.</p>
+
+        <div class="pricing-grid">
+          <article class="pricing-card reveal">
+            <h3 data-i18n="pkg1Title">Automation Audit</h3>
+            <p class="price" data-i18n="pkg1Price">from $250</p>
+            <p data-i18n="pkg1Desc">A deep look at your workflows with a prioritized roadmap you can act on — with or without me.</p>
+            <ul>
+              <li data-i18n="pkg1Item1">Workflow &amp; tooling review</li>
+              <li data-i18n="pkg1Item2">Opportunity map</li>
+              <li data-i18n="pkg1Item3">Prioritized roadmap</li>
+              <li data-i18n="pkg1Item4">One quick-win prototype</li>
+            </ul>
+            <a class="btn btn-block btn-ghost" href="#contact" data-i18n="enquire">Enquire →</a>
           </article>
-          <article class="proof-card reveal">
-            <h3>Firebase deployments</h3>
-            <p>Live static sites with Firebase Hosting plus Firestore lead capture. Fast,
-              inspectable, and practical for local businesses.</p>
-            <a href="https://cedarstone-demo.web.app" target="_blank" rel="noopener">Open demo</a>
+
+          <article class="pricing-card reveal">
+            <h3 data-i18n="pkg2Title">Starter Build</h3>
+            <p class="price" data-i18n="pkg2Price">from $750</p>
+            <p data-i18n="pkg2Desc">One automation or integration, built end-to-end and handed over.</p>
+            <ul>
+              <li data-i18n="pkg2Item1">Single workflow or integration</li>
+              <li data-i18n="pkg2Item2">Setup &amp; testing</li>
+              <li data-i18n="pkg2Item3">Short handover doc</li>
+              <li data-i18n="pkg2Item4">Two weeks of fixes</li>
+            </ul>
+            <a class="btn btn-block btn-ghost" href="#contact" data-i18n="enquire">Enquire →</a>
           </article>
-          <article class="proof-card reveal">
-            <h3>GitHub + GitLab portfolio</h3>
-            <p>Public repos show Python automation, AI agents, JavaScript websites, Devvit
-              apps, documentation, and repeatable client-ready patterns.</p>
-            <a href="https://github.com/git-agent-swarm" target="_blank" rel="noopener">View org</a>
+
+          <article class="pricing-card reveal popular">
+            <span class="popular-badge" data-i18n="mostPicked">Most picked</span>
+            <h3 data-i18n="pkg3Title">Standard Build</h3>
+            <p class="price" data-i18n="pkg3Price">from $1,800</p>
+            <p data-i18n="pkg3Desc">A connected set of automations or a focused internal tool that earns its keep.</p>
+            <ul>
+              <li data-i18n="pkg3Item1">Multiple workflows</li>
+              <li data-i18n="pkg3Item2">Dashboard or light app</li>
+              <li data-i18n="pkg3Item3">Full documentation</li>
+              <li data-i18n="pkg3Item4">30-day support window</li>
+            </ul>
+            <a class="btn btn-block btn-primary" href="#contact" data-i18n="enquire">Enquire →</a>
+          </article>
+
+          <article class="pricing-card reveal">
+            <h3 data-i18n="pkg4Title">Custom / App Build</h3>
+            <p class="price" data-i18n="pkg4Price">from $2,500</p>
+            <p data-i18n="pkg4Desc">A custom app, AI agent, or POC scoped tightly around your problem.</p>
+            <ul>
+              <li data-i18n="pkg4Item1">Custom app or AI agent</li>
+              <li data-i18n="pkg4Item2">Data &amp; API integrations</li>
+              <li data-i18n="pkg4Item3">Deploy &amp; handover</li>
+              <li data-i18n="pkg4Item4">Iteration loops</li>
+            </ul>
+            <a class="btn btn-block btn-ghost" href="#contact" data-i18n="enquire">Enquire →</a>
           </article>
         </div>
-      </div>
-    </section>
 
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="container about-grid">
-        <div class="about-badge reveal" aria-hidden="true"><span>&lt;K/&gt;</span></div>
-        <div class="about-copy reveal">
-          <p class="eyebrow">About</p>
-          <h2>Hi, I'm Kobey.</h2>
-          <p>I'm a developer in Wichita Falls, TX who builds practical software — websites,
-            automations, and AI agents — primarily in <strong>Python</strong> and
-            <strong>JavaScript</strong>. I care about work that's reliable, well-documented,
-            and actually moves the needle for your business.</p>
-          <p>I move fast, communicate clearly, and back everything up with public code and
-            live demos. If you've got a repetitive task eating your time or a site that isn't
-            pulling its weight, I'd love to help.</p>
-          <ul class="check-list">
-            <li>Clear, fixed-scope quotes — you always know the cost</li>
-            <li>Public, documented code — no black boxes</li>
-            <li>Fast turnaround &amp; honest communication</li>
-          </ul>
+        <div class="care-plans reveal">
+          <h3 data-i18n="careTitle">Ongoing care plans</h3>
+          <p data-i18n="careSubtitle">Keep it running, keep it improving. Optional monthly support once you're live — for tuning, extending, and peace of mind. Cancel anytime.</p>
+          <div class="care-grid">
+            <div class="care-card">
+              <h4 data-i18n="care1Title">Essential</h4>
+              <p class="price" data-i18n="care1Price">$200<span>/month</span></p>
+              <p data-i18n="care1Desc">Monitoring, small tweaks, and priority email support to keep things running.</p>
+            </div>
+            <div class="care-card">
+              <h4 data-i18n="care2Title">Growth</h4>
+              <p class="price" data-i18n="care2Price">$450<span>/month</span></p>
+              <p data-i18n="care2Desc">Everything in Essential, plus monthly improvements and a few hours of build time.</p>
+            </div>
+            <div class="care-card">
+              <h4 data-i18n="care3Title">Partner</h4>
+              <p class="price" data-i18n="care3Price">$850<span>/month</span></p>
+              <p data-i18n="care3Desc">Standing build capacity, faster turnarounds, and a recurring strategy call.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section class="section section-alt" id="contact">
+    <section class="section section-contact" id="contact">
       <div class="container contact-grid">
-        <div class="contact-copy reveal">
-          <p class="eyebrow">Let's talk</p>
-          <h2>Tell me what you need</h2>
-          <p class="section-sub">A free 15-minute consult — I'll tell you honestly whether I
-            can help and what it would take. No pressure, no jargon.</p>
-          <ul class="contact-list">
-            <li><span aria-hidden="true">📞</span> <a href="tel:+13374956990">(337) 495-6990</a></li>
+        <div class="contact-copy">
+          <p class="section-label reveal" data-i18n="contactLabel">(04 — Contact)</p>
+          <h2 class="section-title reveal" data-i18n="contactTitle">Let's build something.</h2>
+          <p class="section-subtitle reveal" data-i18n="contactSubtitle">Tell me what you're trying to automate or build. I read every message and reply personally — usually within a day.</p>
+
+          <ul class="contact-list reveal">
+            <li><span aria-hidden="true">📞</span> <a href="tel:+13374956990">(337) 495-6990</a> <em data-i18n="callOrText">— call or text</em></li>
             <li><span aria-hidden="true">✉️</span> <a href="mailto:kobey@kobeydev.com">kobey@kobeydev.com</a></li>
             <li><span aria-hidden="true">💻</span> <a href="https://github.com/broussardkobey67-spec" target="_blank" rel="noopener">github.com/broussardkobey67-spec</a></li>
-            <li><span aria-hidden="true">🦊</span> <a href="https://gitlab.com/broussardkobey67" target="_blank" rel="noopener">gitlab.com/broussardkobey67</a></li>
-            <li><span aria-hidden="true">🏅</span> <a href="https://me.developers.google.com/u/116492041557080639666" target="_blank" rel="noopener">Google Developer badges</a></li>
-            <li><span aria-hidden="true">📍</span> Wichita Falls, TX — available remote</li>
+            <li><span aria-hidden="true">📍</span> <span data-i18n="location">Wichita Falls, TX — available remote · 全球远程可服务</span></li>
           </ul>
         </div>
+
         <form class="contact-form reveal" novalidate>
           <div class="field">
-            <label for="name">Name</label>
+            <label for="name" data-i18n="labelName">Your name</label>
             <input id="name" name="name" type="text" autocomplete="name" required />
             <small class="error" data-for="name"></small>
           </div>
           <div class="field">
-            <label for="email">Email</label>
+            <label for="email" data-i18n="labelEmail">Email</label>
             <input id="email" name="email" type="email" autocomplete="email" required />
             <small class="error" data-for="email"></small>
           </div>
           <div class="field">
-            <label for="phone">Phone <span class="opt">(optional)</span></label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" />
+            <label for="company" data-i18n="labelCompany">Company <span class="opt">(optional)</span></label>
+            <input id="company" name="company" type="text" autocomplete="organization" />
           </div>
           <div class="field">
-            <label for="message">What do you need built or automated?</label>
+            <label for="need" data-i18n="labelNeed">What do you need?</label>
+            <div class="need-options" role="group" aria-label="Service needs">
+              <button type="button" class="need-chip" data-value="workflow" data-i18n="needWorkflow">Workflow Automation</button>
+              <button type="button" class="need-chip" data-value="ai" data-i18n="needAI">Custom AI Agents</button>
+              <button type="button" class="need-chip" data-value="dashboard" data-i18n="needDashboard">Dashboards &amp; Data</button>
+              <button type="button" class="need-chip" data-value="integration" data-i18n="needIntegration">API Integrations</button>
+              <button type="button" class="need-chip" data-value="app" data-i18n="needApp">Small Apps &amp; POCs</button>
+              <button type="button" class="need-chip" data-value="content" data-i18n="needContent">Technical Content</button>
+              <button type="button" class="need-chip" data-value="not-sure" data-i18n="needNotSure">Not sure yet</button>
+            </div>
+            <input type="hidden" name="needs" id="needs-input" />
+          </div>
+          <div class="field">
+            <label for="message" data-i18n="labelMessage">Tell me about it</label>
             <textarea id="message" name="message" rows="4" required></textarea>
             <small class="error" data-for="message"></small>
           </div>
-          <button class="btn btn-block" type="submit">Send it →</button>
+          <button class="btn btn-block btn-primary" type="submit" data-i18n="sendBtn">Send it →</button>
           <p class="form-note" data-form-note hidden></p>
         </form>
       </div>
@@ -486,13 +596,25 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <span class="brand brand-light"><span class="brand-mark" aria-hidden="true">&lt;K/&gt;</span> Kobey Dev Services</span>
-      <p class="copyright">© <span data-year>2026</span> Kobey Broussard · Wichita Falls, TX</p>
+    <div class="container footer-grid">
+      <div>
+        <span class="brand-name">Kobey Dev Services</span>
+        <p class="footer-tag" data-i18n="footerTag">AI-assisted automation · software · content</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#process" data-i18n="navProcess">Process</a>
+        <a href="#pricing" data-i18n="navPricing">Pricing</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="footer-meta">
+        <p data-i18n="footerMeta">Remote · Worldwide · 远程 · 全球</p>
+        <p class="copyright">© <span data-year>2026</span> Kobey Broussard</p>
+      </div>
     </div>
   </footer>
 
   <script type="module" src="js/firebase-form.js"></script>
-  <script src="js/main.js" defer></script>
+  <script src="js/site.js" defer></script>
 </body>
 </html>
