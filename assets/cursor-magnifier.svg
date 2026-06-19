@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <radialGradient id="lens" cx="38%" cy="34%" r="78%">
+      <stop offset="0%" stop-color="#f0d9a8" stop-opacity="0.42"/>
+      <stop offset="55%" stop-color="#c9a96e" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#c9a96e" stop-opacity="0.10"/>
+    </radialGradient>
+  </defs>
+  <!-- see-through gold glass lens -->
+  <circle cx="13" cy="13" r="9" fill="url(#lens)"/>
+  <!-- black frame -->
+  <circle cx="13" cy="13" r="9" fill="none" stroke="#0a0a0a" stroke-width="3"/>
+  <!-- gold outer outline so it never blends into a dark background -->
+  <circle cx="13" cy="13" r="10.8" fill="none" stroke="#e8c78a" stroke-width="1.4"/>
+  <!-- gold inner outline -->
+  <circle cx="13" cy="13" r="7.3" fill="none" stroke="#c9a96e" stroke-width="1" stroke-opacity="0.9"/>
+  <!-- glass specular highlight -->
+  <path d="M9 9.6a5.6 5.6 0 0 1 3.7-3.1" fill="none" stroke="#ffffff" stroke-opacity="0.6" stroke-width="1.3" stroke-linecap="round"/>
+  <!-- handle: black with a gold filament -->
+  <line x1="19.8" y1="19.8" x2="28.6" y2="28.6" stroke="#0a0a0a" stroke-width="4.6" stroke-linecap="round"/>
+  <line x1="19.8" y1="19.8" x2="28.6" y2="28.6" stroke="#e8c78a" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

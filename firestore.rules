@@ -1,0 +1,45 @@
+rules_version = '2';
+
+// Shared public lead capture for KDS and portfolio demos.
+// Anyone may create a validated lead; nobody may read, update, or delete leads
+// through the client SDK. The owner reads leads from trusted admin tooling.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /leads/{leadId} {
+      allow create: if
+        request.resource.data.keys().hasOnly([
+          'name', 'email', 'phone', 'company', 'needs', 'message', 'language',
+          'source', 'createdAt'
+        ])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 1
+        && request.resource.data.name.size() <= 200
+        && request.resource.data.email is string
+        && request.resource.data.email.size() <= 254
+        && request.resource.data.email.matches('^[^@]+@[^@]+[.][^@]+$')
+        && request.resource.data.phone is string
+        && request.resource.data.phone.size() <= 50
+        && (!request.resource.data.keys().hasAny(['company'])
+          || (request.resource.data.company is string
+            && request.resource.data.company.size() <= 200))
+        && (!request.resource.data.keys().hasAny(['needs'])
+          || (request.resource.data.needs is string
+            && request.resource.data.needs.size() <= 300))
+        && request.resource.data.message is string
+        && request.resource.data.message.size() >= 1
+        && request.resource.data.message.size() <= 5000
+        && (!request.resource.data.keys().hasAny(['language'])
+          || (request.resource.data.language is string
+            && request.resource.data.language.size() <= 10))
+        && request.resource.data.source is string
+        && request.resource.data.source.size() <= 100
+        && request.resource.data.createdAt == request.time;
+
+      allow read, update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

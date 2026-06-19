@@ -1,13 +1,18 @@
 {
+  "firestore": {
+    "rules": "firestore.rules"
+  },
   "hosting": {
     "site": "kobeydev",
     "public": ".",
     "ignore": [
       "firebase.json",
+      "firestore.rules",
       ".firebaserc",
       ".git/**",
       ".firebase/**",
       "**/.*",
+      "audits/**",
       "README.md",
       "LICENSE"
     ],

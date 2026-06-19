@@ -1,0 +1,91 @@
+/* ============================================================
+   Kobey Dev Services - signature magnifying-glass cursor.
+   A black magnifier with a see-through gold-glass lens and a
+   gold rim, plus a soft gold "lens glow" that trails the pointer.
+   Shared by the landing page AND every demo (one source of truth).
+   Relative url() resolves against THIS file (/css/), so the same
+   line works from any page depth. China-safe, no external deps.
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body {
+    cursor: url("../assets/cursor-magnifier.svg") 13 13, auto;
+  }
+
+  /* Interactive elements keep the magnifier, falling back to the
+     pointer hand only if the SVG cursor is unsupported. */
+  a,
+  button,
+  [role="button"],
+  .btn,
+  .pill,
+  .need-chip,
+  summary,
+  label,
+  select,
+  input[type="submit"],
+  input[type="button"],
+  input[type="checkbox"],
+  input[type="radio"] {
+    cursor: url("../assets/cursor-magnifier.svg") 13 13, pointer;
+  }
+
+  /* Text entry stays a caret so forms remain comfortable. */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  input[type="password"],
+  input[type="url"],
+  input:not([type]),
+  textarea {
+    cursor: text;
+  }
+
+  /* The trailing gold lens glow (decorative, injected by cursor.js). */
+  .lux-lens {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 46px;
+    height: 46px;
+    margin: -23px 0 0 -23px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 2147483000;
+    opacity: 0;
+    background: radial-gradient(circle at 50% 50%,
+        rgba(232, 199, 138, 0.30),
+        rgba(201, 169, 110, 0.12) 55%,
+        transparent 72%);
+    box-shadow:
+      0 0 0 1px rgba(232, 199, 138, 0.20),
+      0 0 22px 4px rgba(201, 169, 110, 0.22);
+    mix-blend-mode: screen;
+    transition: opacity .25s ease, width .2s ease, height .2s ease,
+      margin .2s ease, background .2s ease;
+    will-change: transform;
+  }
+  .lux-lens.is-visible { opacity: 1; }
+  .lux-lens.is-active {
+    width: 70px;
+    height: 70px;
+    margin: -35px 0 0 -35px;
+    background: radial-gradient(circle at 50% 50%,
+        rgba(232, 199, 138, 0.40),
+        rgba(201, 169, 110, 0.15) 55%,
+        transparent 72%);
+  }
+  .lux-lens.is-down {
+    width: 38px;
+    height: 38px;
+    margin: -19px 0 0 -19px;
+  }
+}
+
+/* Respect reduced-motion: drop the trailing glow entirely. */
+@media (prefers-reduced-motion: reduce) {
+  .lux-lens { display: none !important; }
+}
