@@ -8,8 +8,8 @@ profiles, and pitches to.
 
 - Real business name + clear service offers (websites, lead capture,
   workflow automation, AI agents, data/reporting, writing/docs)
-- Live, clickable proof — 20+ projects linking straight to working demos and code
-- Public credibility links: GitHub, GitLab, Google Developer badges, Firebase demos
+- Live, clickable proof — projects linking straight to working code
+- Public credibility links: GitHub, GitLab, Google Developer badges
 - A **working contact form** (writes leads to Firestore, same locked-down rules
   as the rest of my sites — create-only, validated, no public reads)
 
@@ -26,10 +26,6 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 - [Kobey Dev Services proof hub](https://kobeydev.com) — this site, Firebase-hosted with contact flow and credibility links.
 - [Cedar & Stone demo](https://cedarstone-demo.web.app) — responsive small-business website with lead capture.
-- [VoltWorks Electrical demo](https://kobeydev.com/demos/voltworks/) — electrical contractor website with quote flow, service pages, and project proof.
-- [VitalLoop health app demo](https://kobeydev.com/demos/vitalloop/) — interactive wellness dashboard with tasks, charts, medication, appointments, and notes.
-- [Juniper Table restaurant demo](https://kobeydev.com/demos/juniper-table/) — restaurant website with reservations, order-ahead cart, menu, events, hours, and reviews.
-- [LeasePilot property app demo](https://kobeydev.com/demos/leasepilot/) — property-management dashboard with maintenance tickets, rent status, vendors, inspections, and work-order detail.
 - [invoice-followup-automation](https://github.com/git-agent-swarm/invoice-followup-automation) — CSV invoices to reminder queue, email drafts, and owner dashboard.
 - [nvidia-nim-agent-demo](https://github.com/git-agent-swarm/nvidia-nim-agent-demo) — Python agents for document analysis, code review, and model selection on NVIDIA NIM.
 - [auth0-jwt-api-demo](https://github.com/git-agent-swarm/auth0-jwt-api-demo) — dependency-light Node API guard for Auth0-style RS256 JWT verification.
